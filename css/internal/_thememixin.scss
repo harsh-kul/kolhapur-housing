@@ -1,0 +1,13 @@
+@mixin font-Detils{
+    font-size: 1.5rem;
+    font-family: $theme_font_family;
+    font: $theme_font;
+}
+
+@mixin mix-theme-background-color{
+    background-color: $prinary-color;
+}
+
+@mixin mix-theme-border-color{
+    border-color: $prinary-color;
+}

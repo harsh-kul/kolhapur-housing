@@ -1,0 +1,196 @@
+/*footer*/
+/* Bootstrap Icons */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
+footer {
+  width: auto;
+  background: #100E1D;
+  color: #CCC;
+}
+footer .footer-header {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 8rem;
+}
+footer .footer-header > div {
+  width: 25rem;
+}
+footer .footer-header .footer-nav ul {
+  display: flex;
+  flex-direction: column;
+}
+footer .footer-header .footer-nav ul li {
+  list-style: none;
+}
+footer .footer-header .footer-nav ul li a {
+  font-size: 1.5rem;
+  font-family: Cursive;
+  font: Lucida Handwriting;
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: #CCC;
+  font-weight: 300;
+}
+footer .footer-header .footer-social .footer-logo h4 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+footer .footer-header .footer-social ul {
+  margin-top: 3rem;
+  display: flex;
+  -moz-column-gap: 1.5rem;
+       column-gap: 1.5rem;
+}
+footer .footer-header .footer-social ul li {
+  list-style: none;
+}
+footer .footer-header .footer-social ul li a {
+  text-decoration: none;
+}
+footer .footer-header .footer-social ul li a img {
+  width: 2rem;
+}
+footer .footer-header .footer-join {
+  position: relative;
+  height: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+footer .footer-header .footer-join span {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #CCC;
+}
+footer .footer-header .footer-join input {
+  width: 25rem;
+  height: 4rem;
+  outline: none;
+  border: 0;
+  background: #CCC;
+  border-radius: 8px;
+  padding: 5rem 65rem 8rem, 15rem;
+}
+footer .footer-header .footer-join button {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 2px;
+  background: #2D9CDB;
+  color: white;
+  font-size: 10px;
+  width: 6rem;
+  height: 3rem;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+footer .footer-body {
+  height: 10rempx;
+  color: #BDBDBD;
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+}
+footer .footer-body a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media (max-width: 768px) {
+  footer {
+    width: auto;
+    background: #100E1D;
+    color: #CCC;
+  }
+  footer .footer-header {
+    display: block;
+    justify-content: space-evenly;
+    padding: 8rem;
+  }
+  footer .footer-header .footer-nav ul {
+    display: flex;
+    flex-direction: column;
+    margin: 8rem;
+  }
+  footer .footer-header .footer-nav ul li {
+    list-style: none;
+  }
+  footer .footer-header .footer-nav ul li a {
+    font-size: 1.5rem;
+    font-family: Cursive;
+    font: Lucida Handwriting;
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: #CCC;
+    font-weight: 300;
+  }
+  footer .footer-header .footer-social {
+    margin: 8rem;
+  }
+  footer .footer-header .footer-social .footer-logo h4 {
+    font-size: 2rem;
+    font-weight: 500;
+  }
+  footer .footer-header .footer-social ul {
+    margin-top: 3rem;
+    display: flex;
+    -moz-column-gap: 1.5rem;
+         column-gap: 1.5rem;
+  }
+  footer .footer-header .footer-social ul li {
+    list-style: none;
+  }
+  footer .footer-header .footer-social ul li a {
+    text-decoration: none;
+  }
+  footer .footer-header .footer-social ul li a img {
+    width: 2rem;
+  }
+  footer .footer-header .footer-join {
+    position: relative;
+    height: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 8rem;
+  }
+  footer .footer-header .footer-join span {
+    font-size: 2rem;
+    font-weight: 500;
+    color: #CCC;
+  }
+  footer .footer-header .footer-join input {
+    width: 25rem;
+    height: 4rem;
+    outline: none;
+    border: 0;
+    background: #CCC;
+    border-radius: 8px;
+    padding: 5rem 65rem 8rem, 15rem;
+  }
+  footer .footer-header .footer-join button {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 2px;
+    background: #2D9CDB;
+    color: white;
+    font-size: 10px;
+    width: 6rem;
+    height: 3rem;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    border-radius: 0.5rem;
+  }
+  footer .footer-body {
+    height: 10rempx;
+    color: #BDBDBD;
+    display: grid;
+    place-items: center;
+    font-size: 1rem;
+  }
+  footer .footer-body a {
+    text-decoration: none;
+    color: inherit;
+  }
+}/*# sourceMappingURL=footer.css.map */

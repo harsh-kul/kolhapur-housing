@@ -1,0 +1,410 @@
+/* Bootstrap Icons */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
+html {
+  font-size: 62.5%;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Cursive;
+  font: 1em Lucida Handwriting;
+  width: 100%;
+  height: auto;
+  background-color: #E8E8E8;
+}
+body header {
+  width: 100%;
+  padding: 3rem;
+  display: flex;
+  justify-content: space-between;
+}
+body header .header-logo h4 {
+  font-size: 3rem;
+  color: #26baee;
+  font-family: Cursive;
+  font: Lucida Handwriting;
+}
+body header nav ul {
+  display: inline-flex;
+  -moz-column-gap: 3rem;
+       column-gap: 3rem;
+  align-items: center;
+}
+body header nav ul li {
+  list-style: none;
+}
+body header nav ul li a {
+  text-decoration: none;
+  font-size: 1.4rem;
+  color: #26baee;
+  font-weight: 500;
+}
+body header .mobile__nav__open__btn {
+  display: none;
+}
+body header .mobile__nav__open__btn span {
+  font-size: 23px;
+  line-height: 30px;
+  cursor: pointer;
+}
+body .theme-primary-color {
+  color: #26baee;
+}
+body .theme-secoundary-color {
+  color: #65A9A6;
+}
+body main {
+  width: 100%;
+}
+body main .home-section {
+  display: flex;
+  flex-direction: column;
+  row-gap: 3rem;
+  align-items: center;
+}
+body main .home-section .h-s-inner__1, body main .home-section .h-s-inner__3 {
+  width: 70rem;
+  padding: 0 20rem 0rem 0rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5rem;
+}
+body main .home-section .h-s-inner__1 h6 {
+  font-size: 0px;
+  font-weight: 500;
+  color: #2D9CDB;
+}
+body main .home-section .h-s-inner__1 h1 {
+  margin-top: -10px;
+  font-weight: 500;
+  color: #333333;
+}
+body main .home-section .h-s-inner__2 {
+  width: 130rem;
+}
+body main .home-section .h-s-inner__2 img {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+}
+body main .home-section .h-s-inner__3 h1 {
+  font-weight: 500;
+  color: #333333;
+}
+body main .home-section .h-s-inner__3 p {
+  font-size: 10px;
+  font-weight: 500;
+  color: #4F4F4F;
+}
+body main .service-section {
+  width: 120rem;
+  margin: 8rem auto 0px;
+}
+body main .service-section h1 {
+  font-size: 4rem;
+  font-weight: 500;
+  color: #26baee;
+}
+body main .service-section .inner-group {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: cener;
+  align-items: center;
+  -moz-column-gap: 10rem;
+       column-gap: 10rem;
+}
+body main .service-section .inner-group .card {
+  width: 500rem;
+  height: 40rem;
+  border-radius: 2rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 0.3rem;
+  cursor: pointer;
+  transition: box-shadow 300ms linear;
+}
+body main .service-section .inner-group .card .card-image span {
+  width: 20rem;
+  height: 20rem;
+  background: #26baee;
+  display: grid;
+  place-items: center;
+  border-radius: 10rem;
+  color: white;
+}
+body main .service-section .inner-group .card .card-image img {
+  width: 35rem;
+}
+body main .service-section .inner-group .card .card-title h3 {
+  font-size: 2rem;
+  color: #26baee;
+}
+body main .service-section .inner-group .card .card-content p {
+  font-size: 10px;
+  font-weight: 500;
+  color: #65A9A6;
+}
+body main .service-section .inner-group .card .card-button button {
+  background: #E0E0E0;
+  color: #828282;
+  font-size: 10px;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 5px 10px;
+  transition: background 300ms linear, color 300ms linear;
+}
+body main .service-section .inner-group .card:hover {
+  box-shadow: 0px 10px 30px rgba(51, 51, 51, 0.1);
+}
+body main .service-section .inner-group .card:hover .card-button button {
+  background: #0D6EFD;
+  color: #ffffff;
+}
+body main .service-section .inner-group .card:nth-child(2) .card-image span {
+  background: #27AE60;
+}
+body main .service-section .inner-group .card:nth-child(3) .card-image span {
+  background: #EB5757;
+}
+body main .work-section {
+  width: 120rem;
+  margin: 80px auto 0px;
+}
+body main .work-section h1 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #26baee;
+}
+body main .work-section .inner-group {
+  margin-top: 10rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
+  row-gap: 3rem;
+}
+body main .work-section .inner-group figure {
+  width: 60rem;
+  position: relative;
+}
+body main .work-section .inner-group figure img {
+  width: 60rem;
+  border-radius: 2rem;
+  -o-object-fit: fill;
+     object-fit: fill;
+}
+body main .work-section .inner-group figure figcaption {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #65A9A6;
+}
+body main .work-section .inner-group figure h3 {
+  font-size: 2rem;
+  color: #26baee;
+  font-weight: 500;
+}
+body main .work-section .inner-group figure:first-of-type {
+  margin-top: 8rem;
+}
+body main .work-section .inner-group figure:last-of-type {
+  margin-top: 8px;
+}
+body main .work-section .inner-button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+body main .work-section .inner-button a {
+  text-decoration: none;
+  color: #2D9CDB;
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body main .work-section .inner-button a span {
+  font-size: 16px;
+}
+body main .client-section {
+  width: 120rem;
+  margin: 80px auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 100px;
+}
+body main .client-section .inner__1 {
+  width: 120rem;
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 20rem;
+       column-gap: 20rem;
+}
+body main .client-section .inner__1 .inner-group__1 {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+body main .client-section .inner__1 .inner-group__1 span {
+  color: #e12a3a;
+  font-size: 12px;
+  font-weight: 500;
+}
+body main .client-section .inner__1 .inner-group__1 h1 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #26baee;
+}
+body main .client-section .inner__1 .inner-group__1 p {
+  font-size: 10px;
+  font-weight: 500;
+  color: #65A9A6;
+}
+body main .client-section .inner__1 .inner-group__2 {
+  width: 80rem;
+  display: flex;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+}
+body main .client-section .inner__1 .inner-group__2 > div {
+  width: 50rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: cemter;
+  row-gap: 20px;
+}
+body main .client-section .inner__1 .inner-group__2 > div img {
+  width: 40rem;
+  border-radius: 1rem;
+}
+body main .client-section .inner__2 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 30px;
+}
+body main .client-section .inner__2 h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #26baee;
+}
+body #contactusaddress {
+  background-color: #26baee;
+}
+body #contactusmoblie {
+  background-color: #26baee;
+}
+body #contactusemail {
+  background-color: #26baee;
+}
+body #contactuscardborder {
+  border-color: #26baee;
+}
+body #contactuscardheader {
+  background-color: #26baee;
+}
+body #contactus {
+  margin: 0;
+  padding: 0;
+}
+body #contactsubmitbtn {
+  background-color: #26baee;
+}
+body .contactbg {
+  background-color: #26baee;
+}
+body .card {
+  margin: 1rem;
+}
+body .mysimglecard {
+  margin-left: 5rem;
+  margin-right: 5rem;
+  max-width: 120rem;
+  margin-top: 10rem;
+}
+body .carousel-item img {
+  width: 400rem;
+  height: 40rem;
+}
+body .aboutus {
+  margin-top: 10rem;
+}
+body .aboutus h1 {
+  font-weight: 600;
+}
+body .aboutus p {
+  line-height: 2;
+}
+body .proprtytypecardimage {
+  height: 25rem;
+  width: 5rem;
+}
+body .propertypricecardimage {
+  height: 25rem;
+  width: 40rem;
+  padding: 1rem;
+}
+body .propertycitycardimage {
+  height: 25rem;
+  width: 25.5rem;
+  padding: 1rem;
+}
+body .propetybestcardimage1 {
+  height: 25rem;
+  width: 25.5rem;
+}
+body .propetybestcardimage2 {
+  height: 25rem;
+  width: 25.5rem;
+}
+body .propetybestcardimage3 {
+  height: 25rem;
+  width: 25.5rem;
+}
+
+@media (max-width: 768px) {
+  header {
+    width: 100%;
+    padding: 3rem;
+    display: block;
+  }
+  header .header-logo {
+    margin: 3rem;
+  }
+  header .header-logo h4 {
+    font-size: 3rem;
+    color: #26baee;
+    font-family: Cursive;
+    font: Lucida Handwriting;
+  }
+  header nav ul {
+    display: block;
+    -moz-column-gap: 3rem;
+         column-gap: 3rem;
+    align-items: center;
+    margin: 3rem;
+  }
+  header nav ul li {
+    list-style: none;
+  }
+  header nav ul li a {
+    text-decoration: none;
+    font-size: 1.4rem;
+    color: #26baee;
+    font-weight: 500;
+  }
+}
+/* Media Query for Mobile Devices *//*# sourceMappingURL=index.css.map */
