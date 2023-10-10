@@ -28,12 +28,10 @@ console.log("media id is null Clicked");
 }
  else{
 $(document).ready(function() {
-  const token = $('meta[name="token"]').attr("content");
 console.log("media id data Loading");
 $.ajax({
 url: "../../php/media.php",
 type: "POST",
-headers: {token : token},
 data: {
 "key":"getone",
 "password":_AUTH_PASSWORD_,
@@ -106,11 +104,9 @@ md_col5 : md_col5,
 deleted_on : deleted_on,
 triggered_on : triggered_on,
 }
-const token = $('meta[name="token"]').attr("content");
 $.ajax({
 url: "../../php/media.php",
 type: "POST",
-headers: {token : token},
 data: {
 "key":"updatedata",
 "password":_AUTH_PASSWORD_,
@@ -183,11 +179,9 @@ md_col5 : md_col5,
 deleted_on : deleted_on,
 triggered_on : triggered_on,
 }
-const token = $('meta[name="token"]').attr("content");
 $.ajax({
 url: "../../php/media.php",
 type: "POST",
-headers: {token : token},
 data: {
 "key":"savedata",
 "password":_AUTH_PASSWORD_,
@@ -225,11 +219,9 @@ window.location.href = "../user/media_list_page.php";
  //////////// Save Data   Close   ////////////////////////////
  //////////// Load All Data    ////////////////////////////
 function loadAllmedia(){
-  const token = $('meta[name="token"]').attr("content");
  $.ajax({
 url: "../../php/media.php",
 type: "POST",
-headers: {token : token},
 data: {
 "key":"getalldata",
 "password":_AUTH_PASSWORD_,
@@ -267,11 +259,9 @@ console.log("media id data Load All  :complete ");
  function  updaterecord(id,type){
  $(document).ready(function() {
  var userobject = {id : id}
- const token = $('meta[name="token"]').attr("content");
 $.ajax({
 url: "../../php/media.php",
 type: "POST",
-headers: {token : token},
  data: {
 "key":"deletedata",
 "password":_AUTH_PASSWORD_,

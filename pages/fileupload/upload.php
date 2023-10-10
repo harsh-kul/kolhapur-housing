@@ -1,8 +1,5 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();//Start session if none exists/already started
-}
-$headers = getallheaders();
+session_start();
 
 include('../../config/dbservice.php');
 include('../../config/datehandler.php');

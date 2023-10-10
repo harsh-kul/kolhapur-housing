@@ -1,19 +1,4 @@
-<?php 
-// session_start(); 
-if (session_status() == PHP_SESSION_NONE) {
-	session_start();
-}
-
-// if (isset($_GET['get_token']) && empty($_SESSION["token"])) {
-	$token = bin2hex(random_bytes(64));
-	$_SESSION["token"] = $token;
-// }
-
-// if (isset($_GET['kill_token'])) {
-// 	unset($_SESSION["token"]);
-// 	session_destroy();
-// }
-?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,12 +20,6 @@ if (session_status() == PHP_SESSION_NONE) {
 <body>
 
 
-<?php
-	if (isset($_SESSION["token"])) {
-		echo '<meta name="token" content="' . $_SESSION["token"] . '">';
-
-	}
-	?>
   <section class="displayScreen">
 
     <?php //include('pages/compoent/drawer.php'); ?>
@@ -103,7 +82,7 @@ if (session_status() == PHP_SESSION_NONE) {
       <?php include('pages/compoent/footer.php'); ?>
 
 </body>
-
+<script src="js/jquery.min.js"></script>
 <script src="js/jquery-migrate-3.0.1.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

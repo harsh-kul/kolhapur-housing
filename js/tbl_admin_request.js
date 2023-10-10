@@ -31,12 +31,10 @@ function loaddataofadminrequest(){
       }
       else{
           $(document).ready(function() {
-            const token = $('meta[name="token"]').attr("content");
           console.log("adminrequest id data Loading");
           $.ajax({
           url: "../../php/adminrequest.php",
           type: "POST",
-          headers: {token : token},
           data: {
           "key":"getone",
           "password":_AUTH_PASSWORD_,
@@ -115,11 +113,9 @@ function updateadminrequest(){
         triggered_on : triggered_on,
         req_admin_id : req_admin_id,
         }
-        const token = $('meta[name="token"]').attr("content");
         $.ajax({
                 url: "../../php/adminrequest.php",
                 type: "POST",
-                headers: {token : token},
                 data: {
                 "key":"updatedata",
                 "password":_AUTH_PASSWORD_,
@@ -198,11 +194,9 @@ function saveadminrequest(){
       triggered_on : triggered_on,
       req_admin_id : req_admin_id,
       }
-      const token = $('meta[name="token"]').attr("content");
       $.ajax({
             url: "../../php/adminrequest.php",
             type: "POST",
-            headers: {token : token},
             data: {
             "key":"savedata",
             "password":_AUTH_PASSWORD_,
@@ -244,11 +238,10 @@ function saveadminrequest(){
  //////////// Save Data   Close   ////////////////////////////
  //////////// Load All Data    ////////////////////////////
 function loadAlladminrequest(){
-      const token = $('meta[name="token"]').attr("content");
+
       $.ajax({
       url: "../../include/admin_request.php",
       type: "POST",
-      headers: {token : token},
       data: {
       "key":"getalldata",
       "password":_AUTH_PASSWORD_,
@@ -294,12 +287,10 @@ function loadAlladminrequest(){
  //////////// Fetch and  Data     ////////////////////////////   
  function  updaterecord(id,type){
       $(document).ready(function() {
-            const token = $('meta[name="token"]').attr("content");
       var userobject = {id : id}
       $.ajax({
       url: "../../php/adminrequest.php",
       type: "POST",
-      headers: {token : token},
       data: {
       "key":"deletedata",
       "password":_AUTH_PASSWORD_,

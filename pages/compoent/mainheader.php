@@ -72,8 +72,8 @@
           $str = "<div class='dropdown nav-item'>" .
             "<a href='#' class='dropdown-toggle nav-link' data-bs-toggle='dropdown'>Property</a>" .
             "<li class='dropdown-menu nav-item'>" .
-            "<a href='". __URL_propertypagepage_."' class='dropdown-item nav-item'>Add Property</a>" .
-            "<a href='". __URL_userpropertylistpage_."' class='dropdown-item nav-item'>My Property List</a>" .
+            "<a href='". __URL_propertypagepage_."' class='dropdown-item nav-link'>Add Property</a>" .
+            "<a href='". __URL_userpropertylistpage_."' class='dropdown-item nav-link'>My Property List</a>" .
             "</li>" .
             "</div>";
             echo $str;

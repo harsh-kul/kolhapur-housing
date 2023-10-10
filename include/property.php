@@ -1,73 +1,65 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();//Start session if none exists/already started
-}
-$headers = getallheaders();
+session_start();
+
 include('../config/dbservice.php');
 include('../utils/php/loghandler.php');
 include('../config/datehandler.php');
 $dhandler = new DateHandler();
 $loggeroject = new Logger("property");
 $dbservice = new DB();
+if ($_POST['username'] == "shankar" && $_POST['password'] == "shankar") {
 
-if (isset($headers['token'])) {
-	$header_token = $headers['token'];
-	if ($header_token == $_SESSION['token']) {
-		if ($_POST['username'] == "shankar" && $_POST['password'] == "shankar") {
-
-			switch ($_POST['key']) {
-				case _GETALL_:
-					fetchAllData($dbservice, $dhandler);
-					break;
-				case _DELETEDATA_:
-					deleteData($dbservice, $dhandler);
-					break;
-				case _GETONE_:
-					fetchoneData($dbservice, $dhandler);
-					break;
-				case _UPDATEDATA_:
-					updateData($dbservice, $dhandler);
-					break;
-				case _SAVEDATA_:
-					saveData($dbservice, $dhandler);
-					break;
-				case _AC_PROPERTY_:
-					acceptProperty($dbservice, $dhandler);
-					break;
-				case _ALL_PROPERTY_:
-					AllProperty($dbservice, $dhandler);
-					break;
-				case _RJ_PROPERTY_:
-					rejectProperty($dbservice, $dhandler);
-					break;
-				case _OPEN_STATUS_:
-					openStatusProperty($dbservice, $dhandler);
-					break;
-				case _UPDATEFORACC_:
-					updateDataForAcc($dbservice, $dhandler);
-					break;
-				case _UPDATEFORRJ_:
-					updateDataForRj($dbservice, $dhandler);
-					break;
-				case _COUNT_PROPERTY_:
-					propertyCount($dbservice, $dhandler);
-					break;
-				case _USER_PROPERTY_:
-					AllUserProperty($dbservice, $dhandler);
-					break;
-				case _PROPERTY_STATUS_UPDATE_:
-					updateStatusData($dbservice, $dhandler);
-					break;
-			}
-		} else {
-			echo ('HTTP/1.0 401 Unauthorized');
-		}
+	switch ($_POST['key']) {
+		case _GETALL_:
+			fetchAllData($dbservice, $dhandler);
+			break;
+		case _DELETEDATA_:
+			deleteData($dbservice, $dhandler);
+			break;
+		case _GETONE_:
+			fetchoneData($dbservice, $dhandler);
+			break;
+		case _UPDATEDATA_:
+			updateData($dbservice, $dhandler);
+			break;
+		case _SAVEDATA_:
+			saveData($dbservice, $dhandler);
+			break;
+		case _AC_PROPERTY_:
+			acceptProperty($dbservice, $dhandler);
+			break;
+		case _ALL_PROPERTY_:
+			AllProperty($dbservice, $dhandler);
+			break;
+		case _RJ_PROPERTY_:
+			rejectProperty($dbservice, $dhandler);
+			break;
+		case _OPEN_STATUS_:
+			openStatusProperty($dbservice, $dhandler);
+			break;
+		case _UPDATEFORACC_:
+			updateDataForAcc($dbservice, $dhandler);
+			break;
+		case _UPDATEFORRJ_:
+			updateDataForRj($dbservice, $dhandler);
+			break;
+		case _COUNT_PROPERTY_:
+			propertyCount($dbservice, $dhandler);
+			break;
+		case _USER_PROPERTY_:
+			AllUserProperty($dbservice, $dhandler);
+			break;
+		case _PROPERTY_STATUS_UPDATE_:
+			updateStatusData($dbservice, $dhandler);
+			break;
 	}
-	else{
-		echo "ERROR: Tokens dont match";
-		exit;
-	}
+} else {
+	echo ('HTTP/1.0 401 Unauthorized');
 }
+
+
+
+
 
 
 ///  Update Function 
@@ -78,7 +70,7 @@ function updateData($dbservice, $dhandler)
 	$tbl_propertyobject = $_POST['property_data'];
 	$tbl_propertyobjectarray = json_decode($tbl_propertyobject, true);
 	$pk_ppid = $tbl_propertyobjectarray['pk_ppid'];
-	$fk_usid =  $_SESSION['id'];//$tbl_propertyobjectarray['fk_usid'];
+	$fk_usid = $tbl_propertyobjectarray['fk_usid'];
 	$fk_ptid = $tbl_propertyobjectarray['fk_ptid'];
 	$pp_price = $tbl_propertyobjectarray['pp_price'];
 	$pp_plot_no = $tbl_propertyobjectarray['pp_plot_no'];
@@ -93,7 +85,7 @@ function updateData($dbservice, $dhandler)
 	$pp_owner_name = $tbl_propertyobjectarray['pp_owner_name'];
 	$pp_contact_no = $tbl_propertyobjectarray['pp_contact_no'];
 	$pp_status = $tbl_propertyobjectarray['pp_status'];
-	// $pp_rj_resone = $tbl_propertyobjectarray['pp_rj_resone'];
+	$pp_rj_resone = $tbl_propertyobjectarray['pp_rj_resone'];
 	$pp_deposite = $tbl_propertyobjectarray['pp_deposite'];
 	$pp_aggrement_month = $tbl_propertyobjectarray['pp_aggrement_month'];
 	$pp_created_at = $updated_at;
@@ -101,9 +93,9 @@ function updateData($dbservice, $dhandler)
 
 	$triggered_on = $updated_at;
 	if (!empty($pk_ppid)) {
-		$query = "UPDATE tbl_property SET `fk_usid`=$fk_usid , `fk_ptid`=$fk_ptid , `pp_price`='$pp_price' , `pp_plot_no`='$pp_plot_no' , `pp_ward`='$pp_ward' , `pp_bulding_name`='$pp_bulding_name' , `pp_street`='$pp_street' , `pp_landmark`='$pp_landmark' , `pp_city`='$pp_city' , `pp_district`='$pp_district' , `pp_state`='$pp_state' , `pp_pincode`='$pp_pincode' , `pp_owner_name`='$pp_owner_name' , `pp_contact_no`='$pp_contact_no' , `pp_status`='$pp_status'  , `pp_deposite`='$pp_deposite' , `pp_aggrement_month`='$pp_aggrement_month'  , `pp_created_at`='$pp_created_at' , `pp_updated_at`='$pp_updated_at'  , `triggered_on`='$triggered_on' where `pk_ppid`='$pk_ppid'";
+		$query = "UPDATE tbl_property SET `fk_usid`=$fk_usid , `fk_ptid`=$fk_ptid , `pp_price`='$pp_price' , `pp_plot_no`='$pp_plot_no' , `pp_ward`='$pp_ward' , `pp_bulding_name`='$pp_bulding_name' , `pp_street`='$pp_street' , `pp_landmark`='$pp_landmark' , `pp_city`='$pp_city' , `pp_district`='$pp_district' , `pp_state`='$pp_state' , `pp_pincode`='$pp_pincode' , `pp_owner_name`='$pp_owner_name' , `pp_contact_no`='$pp_contact_no' , `pp_status`='$pp_status' , `pp_rj_resone`='$pp_rj_resone' , `pp_deposite`='$pp_deposite' , `pp_aggrement_month`='$pp_aggrement_month'  , `pp_created_at`='$pp_created_at' , `pp_updated_at`='$pp_updated_at'  , `triggered_on`='$triggered_on' where `pk_ppid`='$pk_ppid'";
 		echo $query;
-		$result = $dbservice->executeDbSaveUpdateQueryReturnId($query);
+		$result = $dbservice->executeDbSaveUpdateQuery($query);
 		if ($result) {
 			$data['status'] = true;
 			$data['data'] = $result;
@@ -173,7 +165,7 @@ function saveData($dbservice, $dhandler)
 
 
 	if (!empty('fk_usid')) {
-		$query = "INSERT INTO tbl_property ( `pk_ppid` , `fk_usid` , `fk_ptid` , `pp_price` , `pp_plot_no` , `pp_ward` , `pp_bulding_name` , `pp_street` , `pp_landmark` , `pp_city` , `pp_district` , `pp_state` , `pp_pincode` , `pp_owner_name` , `pp_contact_no` , `pp_status` , `pp_deposite` , `pp_aggrement_month`, `pp_created_at`, `pp_updated_at` )  VALUES (null , $fk_usid , $fk_ptid , '$pp_price' , '$pp_plot_no' , '$pp_ward' , '$pp_bulding_name' , '$pp_street' , '$pp_landmark' , '$pp_city' , '$pp_district' , '$pp_state' , '$pp_pincode' , '$pp_owner_name' , '$pp_contact_no' , $pp_status , '$pp_deposite' , '$pp_aggrement_month','$updated_at','$updated_at' ) ; ";
+		$query = "INSERT INTO tbl_property ( `pk_ppid` , `fk_usid` , `fk_ptid` , `pp_price` , `pp_plot_no` , `pp_ward` , `pp_bulding_name` , `pp_street` , `pp_landmark` , `pp_city` , `pp_district` , `pp_state` , `pp_pincode` , `pp_owner_name` , `pp_contact_no` , `pp_status` , `pp_deposite` , `pp_aggrement_month`  )  VALUES (null , $fk_usid , $fk_ptid , '$pp_price' , '$pp_plot_no' , '$pp_ward' , '$pp_bulding_name' , '$pp_street' , '$pp_landmark' , '$pp_city' , '$pp_district' , '$pp_state' , '$pp_pincode' , '$pp_owner_name' , '$pp_contact_no' , $pp_status , '$pp_deposite' , '$pp_aggrement_month' ) ; ";
 
 		// print($query);
 		$result = $dbservice->executeDbSaveUpdateQueryReturnId($query);
@@ -245,9 +237,9 @@ function fetchAllData($dbservice, $dhandler)
 ///////////////////////////////////////  Delete Record  //////////////////////// 
 function deleteData($dbservice, $dhandler)
 {
-	$tbl_propertyobject = $_POST['property_data'];
+	$tbl_propertyobject = $_POST['tbl_property_name'];
 	$tbl_propertyobjectarray = json_decode($tbl_propertyobject, true);
-	$id = $tbl_propertyobjectarray['pk_ppid'];
+	$id = $tbl_propertyobjectarray['tbl_propertyid'];
 	if (!empty($id)) {
 		$query = "UPDATE tbl_property SET `pp_is_deleted`= 1  where `pk_ppid` = $id";
 		$result = $dbservice->executeDbSaveUpdateQuery($query);
@@ -262,6 +254,10 @@ function deleteData($dbservice, $dhandler)
 		}
 	}
 }
+
+
+
+
 
 
 function acceptProperty($dbservice, $dhandler)
@@ -305,7 +301,6 @@ function AllUserProperty($dbservice, $dhandler)
 	$userId = $_POST['userid'];
 
 	$q = "SELECT * FROM tbl_property  where pp_is_deleted ='false' and fk_usid = " . $userId;
-	// echo $q;
 	$mydat = $dbservice->executeDbFetchDataQuery($q);
 	$row = $mydat->fetchAll(PDO::FETCH_ASSOC);
 	if ($row) {

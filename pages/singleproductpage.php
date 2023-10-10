@@ -1,18 +1,5 @@
 
 <?php 
-if (session_status() == PHP_SESSION_NONE) {
-	session_start();
-}
-
-// if (isset($_GET['get_token']) && empty($_SESSION["token"])) {
-	$token = bin2hex(random_bytes(64));
-	$_SESSION["token"] = $token;
-// }
-
-// if (isset($_GET['kill_token'])) {
-// 	unset($_SESSION["token"]);
-// 	session_destroy();
-// }
 $productid=0;
 if(isset($_GET['productid']))
 {
@@ -58,13 +45,6 @@ echo  "Please Select Product";
 
 </head>
 <body>
-	
-<?php
-	if (isset($_SESSION["token"])) {
-		echo '<meta name="token" content="' . $_SESSION["token"] . '">';
-
-	}
-	?>
 <script>
     $(document).ready(function () {
         var screenLoader = new ScreenLoaderHandler("displayScreen");

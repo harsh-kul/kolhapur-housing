@@ -1,35 +1,24 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();//Start session if none exists/already started
-}
-$headers = getallheaders();
+session_start();
 
 include('../config/dbservice.php');
 include('../utils/php/loghandler.php');
 $loggeroject = new Logger("property");
 $dbservice = new DB();
-
-if (isset($headers['token'])) {
-	$header_token = $headers['token'];
-	if ($header_token == $_SESSION['token']) {
-        if ($_POST['username'] == "shankar" && $_POST['password'] == "shankar") {
-            $loggeroject->printLogInClassfunction("In", "Auth Switch", ".tbl_property.php");
-            switch ($_POST['key']) {
-                case _SHOW_MEDIA_:
-                    showMediaPrice($dbservice);
-                    break;
-                
-            }
-        } else {
-            echo ('HTTP/1.0 401 Unauthorized');
-        }
+if ($_POST['username'] == "shankar" && $_POST['password'] == "shankar") {
+    $loggeroject->printLogInClassfunction("In", "Auth Switch", ".tbl_property.php");
+    switch ($_POST['key']) {
+        case _SHOW_MEDIA_:
+            showMediaPrice($dbservice);
+            break;
         
     }
-	else{
-		echo "ERROR: Tokens dont match";
-		exit;
-	}
+} else {
+    echo ('HTTP/1.0 401 Unauthorized');
 }
+
+
+
 
 
 

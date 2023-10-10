@@ -25,7 +25,6 @@ function logout(){
       $.ajax({
         url: __URL_include_registration_,
         type: "POST",
-        // headers: {token : token},
         dataType: "json",
         data: {
           key: "logout",

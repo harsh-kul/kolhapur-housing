@@ -1,51 +1,41 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();//Start session if none exists/already started
-}
-$headers = getallheaders();
 include('../config/dbservice.php');
 include('../utils/php/loghandler.php');
 $loggeroject = new Logger("property");
 $dbservice = new DB();
-if (isset($headers['token'])) {
-	$header_token = $headers['token'];
-	if ($header_token == $_SESSION['token']) {
-        if ($_POST['username'] == _AUTH_USERNAME_ && $_POST['password'] == _AUTH_PASSWORD_) {
-            $loggeroject->printLogInClassfunction("In", "Auth Switch", ".tbl_property.php");
-            switch ($_POST['key']) {
-        
-                case _LOADREPORTDATEWISE_:
-                    fetchDateWiseDataForReport($dbservice);
-                    break;
-        
-                case _LOADREPORTDATESTATUSWISE_:
-                    fetchDateWiseStatusDataForReport($dbservice);
-                    break;
-        
-                case _LOADREPORTDATEWISEUSER_:
-                    fetchDateWiseUserReport($dbservice);
-                    break;
-        
-                case _LOADDATEWISELONEREPORT_:
-                    fetchDateWiseLoneReport($dbservice);
-                    break;
-        
-                case _LOADLOANREQUESTREPORT_:
-                    fetchLoneRequestReport($dbservice);
-                    break;
-                case _LOADLONEREQUESTSTATUS_:
-                    fetchLoneRequestStatusReport($dbservice);
-                    break;
-            }
-        } else {
-            echo ('HTTP/1.0 401 Unauthorized');
-        }
+if ($_POST['username'] == _AUTH_USERNAME_ && $_POST['password'] == _AUTH_PASSWORD_) {
+    $loggeroject->printLogInClassfunction("In", "Auth Switch", ".tbl_property.php");
+    switch ($_POST['key']) {
+
+        case _LOADREPORTDATEWISE_:
+            fetchDateWiseDataForReport($dbservice);
+            break;
+
+        case _LOADREPORTDATESTATUSWISE_:
+            fetchDateWiseStatusDataForReport($dbservice);
+            break;
+
+        case _LOADREPORTDATEWISEUSER_:
+            fetchDateWiseUserReport($dbservice);
+            break;
+
+        case _LOADDATEWISELONEREPORT_:
+            fetchDateWiseLoneReport($dbservice);
+            break;
+
+        case _LOADLOANREQUESTREPORT_:
+            fetchLoneRequestReport($dbservice);
+            break;
+        case _LOADLONEREQUESTSTATUS_:
+            fetchLoneRequestStatusReport($dbservice);
+            break;
     }
-	else{
-		echo "ERROR: Tokens dont match";
-		exit;
-	}
+} else {
+    echo ('HTTP/1.0 401 Unauthorized');
 }
+
+
+
 
 
 
@@ -53,7 +43,7 @@ function fetchDateWiseDataForReport($dbservice)
 {
 
     $tbl_propertyobject = $_POST['reportData'];
-    echo ($tbl_propertyobject);
+    // echo ($tbl_propertyobject);
     $tbl_propertyobjectarray = json_decode($tbl_propertyobject, true);
     $fromDate = $tbl_propertyobjectarray['fromDate'];
     $toDate = $tbl_propertyobjectarray['toDate'];
@@ -65,7 +55,7 @@ function fetchDateWiseDataForReport($dbservice)
                 "join tbl_property_type ptype on pt.fk_ptid = ptype.pk_ptid  ".
                 "where DATE_FORMAT(pp_created_at, '%Y-%m-%d %T') >=  DATE_FORMAT('" . $fromDate . " 00:00:00', '%Y-%m-%d %T') and  ".
                 "DATE_FORMAT(pp_created_at, '%Y-%m-%d %T') <=  DATE_FORMAT('" . $toDate . " 00:00:00', '%Y-%m-%d %T');";
-        echo ($q);
+        // echo ($q);
         $mydat = $dbservice->executeDbFetchDataQuery($q);
         $row = $mydat->fetchAll(PDO::FETCH_ASSOC);
         if ($row) {
@@ -84,7 +74,7 @@ function fetchDateWiseDataForReport($dbservice)
         "join tbl_property_type ptype on pt.fk_ptid = ptype.pk_ptid  ".
         "where DATE_FORMAT(pp_created_at, '%Y-%m-%d %T') >=  DATE_FORMAT('" . $fromDate . " 00:00:00', '%Y-%m-%d %T') and  ".
         "DATE_FORMAT(pp_created_at, '%Y-%m-%d %T') <=  DATE_FORMAT('" . $toDate . " 00:00:00', '%Y-%m-%d %T') and pp_status = '". $status ."';"; //. $status . ";";
-        echo ($q);
+        // echo ($q);
         $mydat = $dbservice->executeDbFetchDataQuery($q);
         $row = $mydat->fetchAll(PDO::FETCH_ASSOC);
         $i = 0;

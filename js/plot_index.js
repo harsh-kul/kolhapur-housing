@@ -105,11 +105,9 @@ $(document).ready(function () {
 //////////// Docuemnt  Close Here ////////////////////////////
 
 function showPlotMedia() {
-  const token = $('meta[name="token"]').attr("content");
   $.ajax({
     url: __URL_include_plot_index_,
     type: "POST",
-    headers: {token : token},
     data: {
       key: "showMedia",
       password: _AUTH_PASSWORD_,

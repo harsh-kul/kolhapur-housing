@@ -1,18 +1,4 @@
-<?php //session_start(); 
-if (session_status() == PHP_SESSION_NONE) {
-	session_start();
-}
-
-// if (isset($_GET['get_token']) && empty($_SESSION["token"])) {
-	$token = bin2hex(random_bytes(64));
-	$_SESSION["token"] = $token;
-// }
-
-// if (isset($_GET['kill_token'])) {
-// 	unset($_SESSION["token"]);
-// 	session_destroy();
-// }
-?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,12 +16,6 @@ if (session_status() == PHP_SESSION_NONE) {
 </head>
 
 <body>
-	<?php
-	if (isset($_SESSION["token"])) {
-		echo '<meta name="token" content="' . $_SESSION["token"] . '">';
-
-	}
-	?>
 	<?php include('pages/compoent/mainheader.php'); ?>
 
 
@@ -60,7 +40,7 @@ if (session_status() == PHP_SESSION_NONE) {
 							mixture of immobility,
 							luxury and comfort in one place. The material used in creation ensures long long-lasting
 							life combined with quality and sturdiness.</p>
-
+						<span class="price">&#8377 28,000</span>
 						<a href="#" class="btn-custom p-3 px-4 bg-primary">View Details <span
 								class="icon-plus ml-1"></span></a>
 					</div>
@@ -80,7 +60,7 @@ if (session_status() == PHP_SESSION_NONE) {
 							Kanerkar Nagar.
 							Check out some Apartment that suit your lifestyle and liking. Possession date of S R Karveer
 							Nivasini Residency is Nov, 2025.</p>
-
+						<span class="price">&#8377 28,000</span>
 						<a href="#" class="btn-custom p-3 px-4 bg-primary">View Details <span
 								class="icon-plus ml-1"></span></a>
 					</div>
@@ -170,7 +150,7 @@ if (session_status() == PHP_SESSION_NONE) {
 											<p>Apartment</p>
 										</div>
 										<div class="two">
-
+											<span class="price">$20,000</span>
 										</div>
 									</div>
 								</div>
@@ -192,7 +172,7 @@ if (session_status() == PHP_SESSION_NONE) {
 											<p>Apartment</p>
 										</div>
 										<div class="two">
-
+											<span class="price">$2,000 <small>/ month</small></span>
 										</div>
 									</div>
 								</div>
@@ -214,7 +194,7 @@ if (session_status() == PHP_SESSION_NONE) {
 											<p>Apartment</p>
 										</div>
 										<div class="two">
-
+											<span class="price">$20,000</span>
 										</div>
 									</div>
 								</div>
@@ -236,7 +216,7 @@ if (session_status() == PHP_SESSION_NONE) {
 											<p>Apartment</p>
 										</div>
 										<div class="two">
-
+											<span class="price">$20,000</span>
 										</div>
 									</div>
 								</div>
@@ -258,7 +238,7 @@ if (session_status() == PHP_SESSION_NONE) {
 											<p>Apartment</p>
 										</div>
 										<div class="two">
-
+											<span class="price">$900 <small>/ month</small></span>
 										</div>
 									</div>
 								</div>
@@ -280,13 +260,13 @@ if (session_status() == PHP_SESSION_NONE) {
 											<p>Apartment</p>
 										</div>
 										<div class="two">
-
+											<span class="price">$20,000</span>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-
+					
 					</div>
 				</div>
 			</div>
@@ -320,7 +300,7 @@ if (session_status() == PHP_SESSION_NONE) {
 									<p>Apartment</p>
 								</div>
 								<div class="two">
-
+									<span class="price">$20,000</span>
 								</div>
 							</div>
 							<p>Far far away, behind the word mountains, far from the countries</p>
@@ -349,7 +329,7 @@ if (session_status() == PHP_SESSION_NONE) {
 									<p>Apartment</p>
 								</div>
 								<div class="two">
-
+									<span class="price">$20,000</span>
 								</div>
 							</div>
 							<p>Far far away, behind the word mountains, far from the countries</p>
@@ -361,7 +341,7 @@ if (session_status() == PHP_SESSION_NONE) {
 							</p>
 						</div>
 					</div>
-				</div>
+				</div> 
 				<div class="col-sm col-md-6 col-lg ftco-animate">
 					<div class="properties">
 						<a href="#" class="img img-2 d-flex justify-content-center align-items-center"
@@ -378,7 +358,7 @@ if (session_status() == PHP_SESSION_NONE) {
 									<p>Apartment</p>
 								</div>
 								<div class="two">
-
+									<span class="price">$800 <small>/ month</small></span>
 								</div>
 							</div>
 							<p>Far far away, behind the word mountains, far from the countries</p>
@@ -407,7 +387,7 @@ if (session_status() == PHP_SESSION_NONE) {
 									<p>Apartment</p>
 								</div>
 								<div class="two">
-
+									<span class="price">$20,000</span>
 								</div>
 							</div>
 							<p>Far far away, behind the word mountains, far from the countries</p>

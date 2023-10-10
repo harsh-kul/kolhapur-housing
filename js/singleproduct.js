@@ -9,11 +9,10 @@ $(document).ready(function () {
   
   function loadSinglePropety() {
     var propertyid = $('#productid').val();
-    const token = $('meta[name="token"]').attr("content");
+  
     $.ajax({
       url: __URL_include_SingleProduct_,
       type: "POST",
-      headers: {token : token},
       data: {
         key: _GETONE_,
         password: _AUTH_PASSWORD_,
@@ -49,12 +48,10 @@ $(document).ready(function () {
   
   function indexlogout() {
     // alert("logoutt fuction call");
-    const token = $('meta[name="token"]').attr("content");
     $.ajax({
       url: "include/registration.php",
       type: "POST",
       dataType: "json",
-      headers: {token : token},
       data: {
         key: "logout",
         password: _AUTH_PASSWORD_,
@@ -78,11 +75,10 @@ $(document).ready(function () {
   
   function showMediaTypeWise() {
     // alert("showMedia");
-    const token = $('meta[name="token"]').attr("content");
+  
     $.ajax({
       url: __URL_include_index_,
       type: "POST",
-      headers: {token : token},
       data: {
         key: "showMedia",
         password: _AUTH_PASSWORD_,
@@ -127,11 +123,10 @@ $(document).ready(function () {
   
   function showMediaPopular() {
     // alert("showMedia");
-    const token = $('meta[name="token"]').attr("content");
+  
     $.ajax({
       url: __URL_include_index_,
       type: "POST",
-      headers: {token : token},
       data: {
         key: "showMedia",
         password: _AUTH_PASSWORD_,

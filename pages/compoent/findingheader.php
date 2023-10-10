@@ -28,7 +28,7 @@ $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], 
                         target="_self">Buy</a>
                     <a data-q="false" class="search-tab header-banner-nav-atext" href=<?php echo __URL_INDEX_RENT ?>
                         target="_self">Rent</a>
-                    <a data-q="false" class="search-tab header-banner-nav-atext" href=<?php echo __URL_INDEX_LOAN."#saveloan" ?> 
+                    <a data-q="false" class="search-tab header-banner-nav-atext" href=<?php echo __URL_INDEX_LOAN ?>
                         target="_self">Apply Loan</a>
                     <a data-q="false" class="search-tab header-banner-nav-atext" href=<?php echo __URL_INDEX_PLOT?>
                         target="_self">Plots</a>
@@ -37,8 +37,33 @@ $curPageName = substr($_SERVER["SCRIPT_NAME"], strrpos($_SERVER["SCRIPT_NAME"], 
                     <div class="input-container-helper">
                         <div class="input-container">
 
-                            <div> <select name="landmark" id="landmark" class="search-bar header-searchbar-helper">
+                            <div> <select name="cars" id="cars" class="search-bar header-searchbar-helper">
 
+                                    <option> Tarabai Park </option>
+                                    <option> Rajarampuri </option>
+                                    <option> Nagala Park </option>
+                                    <option> Pachgaon </option>
+                                    <option> shahupuri </option>
+                                    <option> Sane Guruji Vasahat </option>
+                                    <option> Aapate nagar </option>
+                                    <option> kalamba </option>
+                                    <option> Shivaji Peth </option>
+                                    <option> MangaWar Peth </option>
+                                    <option> Rankala </option>
+                                    <option> mukt sainik vasahat </option>
+                                    <option> Ruikar colony </option>
+                                    <option> rajopadhye nagar </option>
+                                    <option> bapuram nagar </option>
+                                    <option> Dadu Chougule Nagar </option>
+                                    <option> Survey Nagar </option>
+                                    <option> Kalambe Turf Thane </option>
+                                    <option> Uttareshwar peth </option>
+                                    <option> phulewadi </option>
+                                    <option> Bondre Nagar </option>
+                                    <option> Hari Om Nagar </option>
+                                    <option> Jarag nagar </option>
+                                    <option> Rk nagar </option>
+                                    <option> Gangavesh </option>
                                 </select>
                             </div>
                         </div>

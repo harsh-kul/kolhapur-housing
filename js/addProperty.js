@@ -24,12 +24,12 @@ $(document).ready(function () {
   // loadcrproperty();
   // loadAllproperty();
 
-  loaddataofproperty();
+  // loaddataofproperty();
 
   $("#btn_update_property").click(function () {
     console.log("property Update Clicked");
     updateproperty();
-    // loadAllproperty();
+    loadAllproperty();
   });
 });
 //////////// Docuemnt  Close Here ////////////////////////////
@@ -42,10 +42,8 @@ function goforupdaterecord(id) {
 //////////// Go For Update  Here ////////////////////////////
 //////////// Load Of Singlge data For Show  Here ////////////////////////////
 function loaddataofproperty() {
-  const token = $('meta[name="token"]').attr("content");
-  // var propertyid = parseInt(localStorage.getItem("propertyid"));
-  var propertyid = $("#pp_id").val();
-  // console.log("propertyid  " + propertyid);
+  var propertyid = parseInt(localStorage.getItem("propertyid"));
+  console.log("propertyid  " + propertyid);
   if (isNaN(propertyid)) {
     console.log("property id is null Clicked");
   } else {
@@ -54,7 +52,6 @@ function loaddataofproperty() {
       $.ajax({
         url: __URL_include_property_,
         type: "POST",
-        headers: {token : token},
         data: {
           key: "getone",
           password: _AUTH_PASSWORD_,
@@ -101,17 +98,15 @@ function loaddataofproperty() {
       });
     });
   }
-  // loadAllproperty();
+  loadAllproperty();
 }
 //////////// Load Of Singlge data For Show  Here   Close ////////////////////////////
 //////////// Update Data    ////////////////////////////
 function updateproperty() {
-  // const token = $('meta[name="token"]').attr("content");
   $(document).ready(function () {
-    const token = $('meta[name="token"]').attr("content");
-    var pkId =  $("#pp_id").val();;
+    var userid = parseInt(localStorage.getItem("propertyid"));
 
-    // var fk_usid = 1;
+    var fk_usid = 1;
     var fk_ptid = $("#property_fk_ptid").val();
     var pp_price = $("#property_pp_price").val();
     var pp_plot_no = $("#property_pp_plot_no").val();
@@ -130,9 +125,9 @@ function updateproperty() {
     var pp_aggrement_month = $("#property_pp_aggrement_month").val();
 
     var propertyobject = {
-      pk_ppid: pkId,
-      // fk_usid: fk_usid,
-      fk_ptid: fk_ptid,
+      pk_ppid: userid,
+      fk_usid: fk_usid,
+      fk_ptid: 1,
       pp_price: pp_price,
       pp_plot_no: pp_plot_no,
       pp_ward: pp_ward,
@@ -154,7 +149,6 @@ function updateproperty() {
     $.ajax({
       url: __URL_include_property_,
       type: "POST",
-      headers: {token : token},
       data: {
         key: "updatedata",
         password: _AUTH_PASSWORD_,
@@ -184,7 +178,6 @@ function updateproperty() {
         $("#property_pp_rj_resone").val("");
         $("#property_pp_deposite").val("");
         $("#property_pp_aggrement_month").val("");
-        window.location.href = "../pages/fileupload/photoupload.php?ppid="+data['data']; //+data;
       },
       error: function (error) {
         console.log("property id data Update  :error" + error.responseText);
@@ -406,13 +399,10 @@ function validateProperty() {
 }
 //////////// Save Data    ////////////////////////////
 function saveproperty(propertyobject) {
-  // const token = $('meta[name="token"]').attr("content");
   $(document).ready(function () {
-    const token = $('meta[name="token"]').attr("content");
     $.ajax({
       url: __URL_include_property_,
       type: "POST",
-      headers: {token : token},
       data: {
         key: "savedata",
         password: _AUTH_PASSWORD_,
@@ -498,14 +488,11 @@ function saveproperty(propertyobject) {
 
 //////////// Fetch and  Data     ////////////////////////////
 function loadPropertyType() {
-  // const token = $('meta[name="token"]').attr("content");
   $(document).ready(function () {
-    const token = $('meta[name="token"]').attr("content");
     $.ajax({
       url: __URL_include_property_type_,
       type: "POST",
       dataType: "json",
-      headers: {token : token},
       data: {
         key: "getalldata",
         password: _AUTH_PASSWORD_,
@@ -522,9 +509,9 @@ function loadPropertyType() {
               $("#property_fk_ptid").append(
                 "<option value=" +
                   data[i].pk_ptid +
-                  " style='color: black;' >" +
+                  ">" +
                   data[i].pt_name +
-                  " </option>"
+                  "</option>"
               );
             }
           } 
@@ -551,11 +538,9 @@ function acProperty(id) {
     pk_ppid: pk_ppid,
   };
   $(document).ready(function () {
-    const token = $('meta[name="token"]').attr("content");
     $.ajax({
       url: __URL_include_property_,
       type: "POST",
-      headers: {token : token},
       data: {
         key: "updateacProperty",
         password: _AUTH_PASSWORD_,
@@ -608,9 +593,7 @@ function acProperty(id) {
 }
 
 function rjProperty(id) {
-  // const token = $('meta[name="token"]').attr("content");
   $(document).ready(function () {
-    const token = $('meta[name="token"]').attr("content");
     var pk_ppid = id;
 
     var propertyobject = {
@@ -620,7 +603,6 @@ function rjProperty(id) {
     $.ajax({
       url: __URL_include_property_,
       type: "POST",
-      headers: {token : token},
       data: {
         key: "updaterjProperty",
         password: _AUTH_PASSWORD_,

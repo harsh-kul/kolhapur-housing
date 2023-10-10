@@ -1,18 +1,3 @@
-<?php 
-if (session_status() == PHP_SESSION_NONE) {
-	session_start();
-}
-
-// if (isset($_GET['get_token']) && empty($_SESSION["token"])) {
-	$token = bin2hex(random_bytes(64));
-	$_SESSION["token"] = $token;
-// }
-
-// if (isset($_GET['kill_token'])) {
-// 	unset($_SESSION["token"]);
-// 	session_destroy();
-// }
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,13 +24,6 @@ if (session_status() == PHP_SESSION_NONE) {
 </head>
 
 <body>
-    
-<?php
-	if (isset($_SESSION["token"])) {
-		echo '<meta name="token" content="' . $_SESSION["token"] . '">';
-
-	}
-	?>
 <form >
 
 <table><tr>

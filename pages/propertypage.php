@@ -1,54 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php
+    include('../config/route.php');
+    include('compoent/commonheader.php'); ?>
+
+
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap.min.js"></script>
+    <script src="../js/addProperty.js"></script>
+    <script src="../js/datatablehandler.js"></script>
+
+
+</head>
 <?php
-
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-
-$token = bin2hex(random_bytes(64));
-$_SESSION["token"] = $token;
-
+session_start();
 if (isset($_SESSION['id'])) {
     // $productid = $_GET['productid'];
     // echo("session");
 } else {
     // echo("not session");
     $url = __URL_INDEX_;
-    header('Location: ' . $url);
-
-}
-
-if (isset($_GET['ppid'])) {
-    $ppid = $_GET['ppid'];
+    header('Location: '. $url);
 
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-
-    <?php
-    include('../config/route.php');
-    include('compoent/commonheader.php'); ?>
-    <script src="../js/addProperty.js"></script>
-
-    <!-- <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap.min.js"></script> -->
-
-    <!-- <script src="../js/datatablehandler.js"></script> -->
-
-
-</head>
-
 <body>
 
-    <?php
-    if (isset($_SESSION["token"])) {
-        echo '<meta name="token" content="' . $_SESSION["token"] . '">';
-
-    }
-    ?>
     <?php include('../pages/compoent/mainheader.php'); ?>
     <!-- END nav -->
     <section>
@@ -65,14 +48,13 @@ if (isset($_GET['ppid'])) {
                 <div class="col-md-12 search-wrap">
 
                     <form action="#" class="search-property">
-                        <input type="hidden" name="pp_id" id="pp_id" value=<?php echo $ppid ?>>
                         <div class="row">
                             <div class="col-md align-items-end">
                                 <div class="form-group">
                                     <br />
                                     <select name="" id="property_fk_ptid" class="form-control custom-select">
 
-                                        <option value="0" selected style="color: black;">Select Type</option>
+                                        <option value="0" selected>Select Type</option>
                                     </select>
                                 </div>
                             </div>
@@ -134,7 +116,35 @@ if (isset($_GET['ppid'])) {
                                         <br />
                                         <input type="text" class="inputText form-control form-control-lg"
                                             id="property_pp_landmark" />
+                                        <!-- <select name="property_pp_landmark" id="property_pp_landmark" class="form-control form-control-lg">
 
+                                            <option> Tarabai Park </option>
+                                            <option> Rajarampuri </option>
+                                            <option> Nagala Park </option>
+                                            <option> Pachgaon </option>
+                                            <option> shahupuri </option>
+                                            <option> Sane Guruji Vasahat </option>
+                                            <option> Aapate nagar </option>
+                                            <option> kalamba </option>
+                                            <option> Shivaji Peth </option>
+                                            <option> MangaWar Peth </option>
+                                            <option> Rankala </option>
+                                            <option> mukt sainik vasahat </option>
+                                            <option> Ruikar colony </option>
+                                            <option> rajopadhye nagar </option>
+                                            <option> bapuram nagar </option>
+                                            <option> Dadu Chougule Nagar </option>
+                                            <option> Survey Nagar </option>
+                                            <option> Kalambe Turf Thane </option>
+                                            <option> Uttareshwar peth </option>
+                                            <option> phulewadi </option>
+                                            <option> Bondre Nagar </option>
+                                            <option> Hari Om Nagar </option>
+                                            <option> Jarag nagar </option>
+                                            <option> Rk nagar </option>
+                                            <option> Gangavesh </option>
+                                        </select>
+                                         -->
                                         <span class="floating-label">Landmark</span>
                                     </div>
 
@@ -278,23 +288,9 @@ if (isset($_GET['ppid'])) {
                             <div class="col-md-6 align-items-end">
                             </div>
                             <div class="col-md-6 align-items-end">
-                                <div class="form-group" id="btnForProperty">
-                                    <script>
-                                        var propertyid = $("#pp_id").val();//parseInt(localStorage.getItem("propertyid"));
-                                        if (isNaN(propertyid)) {
-                                            $("#btnForProperty").append(
-                                                "<button id='btn_save_property' value='Save' " +
-                                                "class= 'next form-control btn btn-primary' > Next</button > "
-                                            );
-                                        } else {
-                                            $("#btnForProperty").append(
-                                                "<button id='btn_update_property' value='Update' " +
-                                                "class= 'next form-control btn btn-primary' > Next 1</button > "
-                                            );
-                                        }
-                                    </script>
-                                    <!-- <button id="btn_save_property" value="Save"
-                                        class="next form-control btn btn-primary">Next</button> -->
+                                <div class="form-group">
+                                    <button id="btn_save_property" value="Save"
+                                        class="next form-control btn btn-primary">Next</button>
                                 </div>
                             </div>
                             <!-- <div class="col-md align-items-end">
@@ -315,12 +311,6 @@ if (isset($_GET['ppid'])) {
 
                     </form>
                 </div>
-
-                <div>
-                    <table>
-
-                    </table>
-                </div>
             </div>
         </div>
     </section>
@@ -329,14 +319,15 @@ if (isset($_GET['ppid'])) {
     <?php include('../pages/compoent/footer.php'); ?>
 
     <!-- loader -->
-    <!-- <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
             <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
             <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
                 stroke="#F96D00" />
-        </svg></div> -->
+        </svg></div>
 
 
-    <!-- <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/addProperty.js"></script>
     <script src="../js/jquery-migrate-3.0.1.min.js"></script>
     <script src="../js/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
@@ -350,13 +341,11 @@ if (isset($_GET['ppid'])) {
     <script src="../js/bootstrap-datepicker.js"></script>
     <script src="../js/jquery.timepicker.min.js"></script>
     <script src="../js/scrollax.min.js"></script>
-    
-    <script src="../js/google-map.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/index.js"></script> -->
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="../js/google-map.js"></script>
+    <script src="../js/main.js"></script>
+
 </body>
 
 </html>

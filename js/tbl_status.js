@@ -29,11 +29,9 @@ console.log("status id is null Clicked");
  else{
 $(document).ready(function() {
 console.log("status id data Loading");
-const token = $('meta[name="token"]').attr("content");
 $.ajax({
 url: "../../php/status.php",
 type: "POST",
-headers: {token : token},
 data: {
 "key":"getone",
 "password":_AUTH_PASSWORD_,
@@ -83,11 +81,9 @@ is_deleted : is_deleted,
 deleted_on : deleted_on,
 triggered_on : triggered_on,
 }
-const token = $('meta[name="token"]').attr("content");
 $.ajax({
 url: "../../php/status.php",
 type: "POST",
-headers: {token : token},
 data: {
 "key":"updatedata",
 "password":_AUTH_PASSWORD_,
@@ -136,11 +132,9 @@ is_deleted : is_deleted,
 deleted_on : deleted_on,
 triggered_on : triggered_on,
 }
-const token = $('meta[name="token"]').attr("content");
 $.ajax({
 url: "../../php/status.php",
 type: "POST",
-headers: {token : token},
 data: {
 "key":"savedata",
 "password":_AUTH_PASSWORD_,
@@ -170,11 +164,9 @@ window.location.href = "../user/status_list_page.php";
  //////////// Save Data   Close   ////////////////////////////
  //////////// Load All Data    ////////////////////////////
 function loadAllstatus(){
-  const token = $('meta[name="token"]').attr("content");
  $.ajax({
 url: "../../php/status.php",
 type: "POST",
-headers: {token : token},
 data: {
 "key":"getalldata",
 "password":_AUTH_PASSWORD_,
@@ -212,12 +204,10 @@ console.log("status id data Load All  :complete ");
 function  updaterecord(id,type){
  $(document).ready(function() {
  var userobject = {id : id}
- const token = $('meta[name="token"]').attr("content");
 $.ajax({
 url: "../../php/status.php",
 type: "POST",
-headers: {token : token},
-data: {
+ data: {
 "key":"deletedata",
 "password":_AUTH_PASSWORD_,
 "username":_AUTH_USERNAME_,

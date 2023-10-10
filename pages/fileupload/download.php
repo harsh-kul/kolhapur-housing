@@ -1,8 +1,5 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();//Start session if none exists/already started
-}
-$headers = getallheaders();
+
 include('../../config/dbservice.php');
 if(isset($_GET['filename']))
 {

@@ -35,11 +35,9 @@ function loaddataofstaff(){
   {
         $(document).ready(function() {
             console.log("staff id data Loading");
-            const token = $('meta[name="token"]').attr("content");
             $.ajax({
             url: __URL_include_staff_,
             type: "POST",
-            headers: {token : token},
             data: {
             "key":"getone",
             "password":_AUTH_PASSWORD_,
@@ -97,11 +95,10 @@ sf_status : sf_status,
 }
 $(document).ready(function () {
   
-  const token = $('meta[name="token"]').attr("content");
+
 $.ajax({
 url: __URL_include_staff_,
 type: "POST",
-headers: {token : token},
 data: {
 "key":"updatedata",
 "password":_AUTH_PASSWORD_,
@@ -176,11 +173,9 @@ sf_col4 : sf_col4,
 deleted_on : deleted_on,
 triggered_on : triggered_on,
 }
-const token = $('meta[name="token"]').attr("content");
 $.ajax({
 url: "../../php/staff.php",
 type: "POST",
-headers: {token : token},
 data: {
 "key":"savedata",
 "password":_AUTH_PASSWORD_,
@@ -219,11 +214,9 @@ window.location.href = __URL_stafflistpage_;
 function loadAllstaff(){
   var dataTableHandler = new DataTableHandler("myTable");
   dataTableHandler.inlizlaiseDataTable();
-  const token = $('meta[name="token"]').attr("content");
   $.ajax({
   url: __URL_include_staff_,
   type: "POST",
-  headers: {token : token},
   data: {
   "key":"getalldata",
   "password":_AUTH_PASSWORD_,
@@ -278,11 +271,9 @@ function loadAllstaff(){
 function  updaterecord(id,type){
  $(document).ready(function() {
  var userobject = {id : id}
- const token = $('meta[name="token"]').attr("content");
 $.ajax({
 url: __URL_include_staff_,
 type: "POST",
-headers: {token : token},
  data: {
 "key":"deletedata",
 "password":_AUTH_PASSWORD_,

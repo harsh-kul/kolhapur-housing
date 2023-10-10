@@ -29,12 +29,10 @@ console.log("configtable id is null Clicked");
 
  else{
 $(document).ready(function() {
-  const token = $('meta[name="token"]').attr("content");
 console.log("configtable id data Loading");
 $.ajax({
 url: "../../php/configtable.php",
 type: "POST",
-headers: {token : token},
 data: {
 "key":"getone",
 "password":_AUTH_PASSWORD_,
@@ -102,11 +100,9 @@ is_delete : is_delete,
 deleted_on : deleted_on,
 triggerd_on : triggerd_on,
 }
-const token = $('meta[name="token"]').attr("content");
 $.ajax({
 url: "../../php/configtable.php",
 type: "POST",
-headers: {token : token},
 data: {
 "key":"updatedata",
 "password":_AUTH_PASSWORD_,
@@ -173,11 +169,9 @@ is_delete : is_delete,
 deleted_on : deleted_on,
 triggerd_on : triggerd_on,
 }
-const token = $('meta[name="token"]').attr("content");
 $.ajax({
 url: "../../php/configtable.php",
 type: "POST",
-headers: {token : token},
 data: {
 "key":"savedata",
 "password":_AUTH_PASSWORD_,
@@ -214,11 +208,9 @@ window.location.href = "../user/configtable_list_page.php";
  //////////// Save Data   Close   ////////////////////////////
  //////////// Load All Data    ////////////////////////////
 function loadAllconfigtable(){
-  const token = $('meta[name="token"]').attr("content");
  $.ajax({
 url: "../../php/configtable.php",
 type: "POST",
-headers: {token : token},
 data: {
 "key":"getalldata",
 "password":_AUTH_PASSWORD_,
@@ -255,12 +247,10 @@ console.log("configtable id data Load All  :complete ");
  //////////// Fetch and  Data     ////////////////////////////   
 function  updaterecord(id,type){
  $(document).ready(function() {
-  const token = $('meta[name="token"]').attr("content");
  var userobject = {id : id}
 $.ajax({
 url: "../../php/configtable.php",
 type: "POST",
-headers: {token : token},
  data: {
 "key":"deletedata",
 "password":_AUTH_PASSWORD_,

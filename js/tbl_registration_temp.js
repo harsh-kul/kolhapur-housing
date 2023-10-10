@@ -28,12 +28,10 @@ console.log("registrationtemp id is null Clicked");
 }
  else{
 $(document).ready(function() {
-  const token = $('meta[name="token"]').attr("content");
 console.log("registrationtemp id data Loading");
 $.ajax({
 url: "../../php/registrationtemp.php",
 type: "POST",
-headers: {token : token},
 data: {
 "key":"getone",
 "password":_AUTH_PASSWORD_,
@@ -131,11 +129,9 @@ rg_col5 : rg_col5,
 rg_deleted_on : rg_deleted_on,
 rg_triggered_on : rg_triggered_on,
 }
-const token = $('meta[name="token"]').attr("content");
 $.ajax({
 url: "../../php/registrationtemp.php",
 type: "POST",
-headers: {token : token},
 data: {
 "key":"updatedata",
 "password":_AUTH_PASSWORD_,
@@ -232,11 +228,9 @@ rg_col5 : rg_col5,
 rg_deleted_on : rg_deleted_on,
 rg_triggered_on : rg_triggered_on,
 }
-const token = $('meta[name="token"]').attr("content");
 $.ajax({
 url: "../../php/registrationtemp.php",
 type: "POST",
-headers: {token : token},
 data: {
 "key":"savedata",
 "password":_AUTH_PASSWORD_,
@@ -282,11 +276,9 @@ window.location.href = "../user/registrationtemp_list_page.php";
  //////////// Save Data   Close   ////////////////////////////
  //////////// Load All Data    ////////////////////////////
 function loadAllregistrationtemp(){
-  const token = $('meta[name="token"]').attr("content");
  $.ajax({
 url: "../../php/registrationtemp.php",
 type: "POST",
-headers: {token : token},
 data: {
 "key":"getalldata",
 "password":_AUTH_PASSWORD_,
@@ -324,11 +316,9 @@ console.log("registrationtemp id data Load All  :complete ");
 function  updaterecord(id,type){
  $(document).ready(function() {
  var userobject = {id : id}
- const token = $('meta[name="token"]').attr("content");
 $.ajax({
 url: "../../php/registrationtemp.php",
 type: "POST",
-headers: {token : token},
  data: {
 "key":"deletedata",
 "password":_AUTH_PASSWORD_,
