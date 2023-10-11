@@ -1,12 +1,11 @@
-const _D_B_="kolhapurhousing"; //local
-const _DNS_="localhost";  //local
-const _USER_="root"; //local		     
-const _PASS_="root"; //local
-// const _D_B_="i8954968_wp1"; // production
-// const _DNS_="localhost";  // production
-// const _USER_="harshhk";  // production     
-// const _PASS_="JayShankar#13"; // production
-// const __BASE__URL__="http://localhost/HK-3.0/";
+// const _D_B_="kolhapurhousing"; //local
+// const _DNS_="localhost";  //local
+// const _USER_="root"; //local		     
+// const _PASS_="root"; //local
+const _D_B_="i8954968_wp1"; // production
+const _DNS_="localhost";  // production
+const _USER_="harshhk";  // production     
+const _PASS_="K\$PcJ#,r?ZbS"; // production
 const _SAVEDATA_="savedata";					     
 const _UPDATEDATA_="updatedata";
 const _GETALL_="getalldata";
@@ -45,8 +44,8 @@ const _MAX_VIDEO_SIZE_LIMIT_=41943040;
 const __ALERT_SELECTED_PHOTO_LARGE_="Selected Photo is More Than 10 Mb Please selcet another one "
 const __ALERT_SELECTED_VIDEO_LARGE_="Selected Video is More Than 20 Mb Please selcet another one "
 
-const __BASE__URL__ = "http://localhost:8080/housingHK/";
-// const __BASE__URL__ = "http://housingkolhapur.com/test/";
+// const __BASE__URL__ = "http://localhost:8080/housingHK/";
+const __BASE__URL__ = "http://housingkolhapur.com/test_ver/";
 const __URL_INCLUDE_ =  __BASE__URL__ + "include/";
 
 

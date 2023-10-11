@@ -1,23 +1,22 @@
 <?php
 // local
-define("_DB_","kolhapurhousing");
-define("_DNS_","localhost"); 
-define("_USER_","root"); 					     
-define("_PASS_","root");
-define("_VIDO_UPLOAD_PATH_", "../../upload/videos/");
-define("_IMAGE_UPLOAD_PATH_", "../../upload/images/");
-define("__BASE__URL__","http://localhost:8080/housingHK/");
+// define("_DB_","kolhapurhousing");
+// define("_DNS_","localhost"); 
+// define("_USER_","root"); 					     
+// define("_PASS_","root");
+// define("_VIDO_UPLOAD_PATH_", "../../upload/videos/");
+// define("_IMAGE_UPLOAD_PATH_", "../../upload/images/");
+// define("__BASE__URL__","http://localhost:8080/housingHK/");
 
 
 //production
-// define("_DB_", "housingkolhapur");
-// define("_DB_", "i8954968_wp1");
-// define("_DNS_", "localhost");
-// define("_USER_", "harshhk");
-// define("_PASS_", "JayShankar#13");
-// define("_VIDO_UPLOAD_PATH_", "../../upload/videos/");
-// define("_IMAGE_UPLOAD_PATH_", "../../upload/images/");
-// define("__BASE__URL__","http://housingkolhapur.com/test/");
+define("_DB_", "i8954968_wp1");
+define("_DNS_", "localhost");
+define("_USER_", "harshhk");
+define("_PASS_", "JayShankar#13");
+define("_VIDO_UPLOAD_PATH_", "../../upload/videos/");
+define("_IMAGE_UPLOAD_PATH_", "../../upload/images/");
+define("__BASE__URL__","http://housingkolhapur.com/test_ver/");
 
 
 define("_SAVEDATA_", "savedata");
