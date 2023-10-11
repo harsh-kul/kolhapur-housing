@@ -1,4 +1,18 @@
-<?php include('../config/route.php') ?>
+<?php 
+if (session_status() == PHP_SESSION_NONE) {
+	session_start();
+}
+
+// if (isset($_GET['get_token']) && empty($_SESSION["token"])) {
+	$token = bin2hex(random_bytes(64));
+	$_SESSION["token"] = $token;
+// }
+
+// if (isset($_GET['kill_token'])) {
+// 	unset($_SESSION["token"]);
+// 	session_destroy();
+// }
+include('../config/route.php') ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -88,11 +102,12 @@
       tbl_registrationid: rg_id,
     };
     $(document).ready(function () {
-
+      const token = $('meta[name="token"]').attr("content");
       $.ajax({
         url: __URL_include_registration_,
         type: "POST",
         dataType: "json",
+        headers: {token : token},
         data: {
           key: "getone",
           password: _AUTH_PASSWORD_,
@@ -153,11 +168,12 @@
       tbl_registrationid: rg_id,
     };
     $(document).ready(function () {
-
+      const token = $('meta[name="token"]').attr("content");
       $.ajax({
         url: __URL_include_registration_,
         type: "POST",
         dataType: "json",
+        headers: {token : token},
         data: {
           key: "verifyotp",
           password: _AUTH_PASSWORD_,
@@ -201,11 +217,12 @@
       tbl_registrationotp: otp,
     };
     $(document).ready(function () {
-
+      const token = $('meta[name="token"]').attr("content");
       $.ajax({
         url: __URL_include_registration_,
         type: "POST",
         dataType: "json",
+        headers: {token : token},
         data: {
           key: "resentotp",
           password: _AUTH_PASSWORD_,
@@ -248,11 +265,12 @@
       tbl_registrationid: rg_id,
     };
     // $(document).ready(function () {
-
+      const token = $('meta[name="token"]').attr("content");
       $.ajax({
         url: __URL_include_registration_,
         type: "POST",
         dataType: "json",
+        headers: {token : token},
         data: {
           key: "sendotp",
           password: _AUTH_PASSWORD_,
@@ -288,6 +306,12 @@
 <body>
 
 
+<?php
+	if (isset($_SESSION["token"])) {
+		echo '<meta name="token" content="' . $_SESSION["token"] . '">';
+
+	}
+	?>
   <?php include('../pages/compoent/mainheader.php'); ?>
 
   <div class="container height-100 d-flex justify-content-center align-items-center">

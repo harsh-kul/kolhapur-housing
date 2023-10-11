@@ -1,30 +1,38 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();//Start session if none exists/already started
+}
+$headers = getallheaders();
 
 include('../config/dbservice.php');
 include('../utils/php/loghandler.php');
 $loggeroject = new Logger("property");
 $dbservice = new DB();
-if ($_POST['username'] == "shankar" && $_POST['password'] == "shankar") {
-    $loggeroject->printLogInClassfunction("In", "Auth Switch", ".tbl_property.php");
-    switch ($_POST['key']) {
-        case _SHOW_MEDIA_:
-            showMediaPrice($dbservice);
-            break;
-        case _SHOW_MEDIA_PRICEWISE:
-            showMediaType($dbservice);
-            break;
-        case _SHOW_MEDIA_CATEGORIWISE:
-            showMediaPopular($dbservice);
-            break;
+if (isset($headers['token'])) {
+	$header_token = $headers['token'];
+	if ($header_token == $_SESSION['token']) {
+        if ($_POST['username'] == "shankar" && $_POST['password'] == "shankar") {
+            $loggeroject->printLogInClassfunction("In", "Auth Switch", ".tbl_property.php");
+            switch ($_POST['key']) {
+                case _SHOW_MEDIA_:
+                    showMediaPrice($dbservice);
+                    break;
+                case _SHOW_MEDIA_PRICEWISE:
+                    showMediaType($dbservice);
+                    break;
+                case _SHOW_MEDIA_CATEGORIWISE:
+                    showMediaPopular($dbservice);
+                    break;
+            }
+        } else {
+            echo ('HTTP/1.0 401 Unauthorized');
+        }
     }
-} else {
-    echo ('HTTP/1.0 401 Unauthorized');
+	else{
+		echo "ERROR: Tokens dont match";
+		exit;
+	}
 }
-
-
-
-
 
 
 function showMediaPrice($dbservice)

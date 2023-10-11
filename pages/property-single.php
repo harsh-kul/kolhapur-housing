@@ -1,3 +1,18 @@
+<?php 
+if (session_status() == PHP_SESSION_NONE) {
+	session_start();
+}
+
+// if (isset($_GET['get_token']) && empty($_SESSION["token"])) {
+	$token = bin2hex(random_bytes(64));
+	$_SESSION["token"] = $token;
+// }
+
+// if (isset($_GET['kill_token'])) {
+// 	unset($_SESSION["token"]);
+// 	session_destroy();
+// }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -27,6 +42,13 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
+	
+<?php
+	if (isset($_SESSION["token"])) {
+		echo '<meta name="token" content="' . $_SESSION["token"] . '">';
+
+	}
+	?>
     <div class="top">
     	<div class="container">
     		<div class="row d-flex align-items-center">
@@ -82,7 +104,7 @@
     </div>
 
 
-    <section class="ftco-section">
+    <!-- <section class="ftco-section">
       <div class="container">
         <div class="row">
           <div class="col-lg-8">
@@ -234,7 +256,7 @@
           		</div>
 
           	</div>
-          </div> <!-- .col-md-8 -->
+          </div>
           <div class="col-lg-4 sidebar ftco-animate">
             <div class="sidebar-box">
               <form action="#" class="search-form">
@@ -314,8 +336,8 @@
           </div>
         </div>
       </div>
-    </section> <!-- .section -->
-		
+    </section>
+		 -->
 		<section class="ftco-section-parallax">
       <div class="parallax-img d-flex align-items-center">
         <div class="container">
@@ -405,23 +427,6 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/bootstrap-datepicker.js"></script>
-  <script src="js/jquery.timepicker.min.js"></script>
-  <script src="js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
     
   </body>
 </html>

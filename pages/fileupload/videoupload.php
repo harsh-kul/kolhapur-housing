@@ -1,4 +1,10 @@
-<?php session_start();
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+$token = bin2hex(random_bytes(64));
+$_SESSION["token"] = $token;
+
 include('../../config/route.php');
 ?>
 
@@ -26,22 +32,31 @@ include('../../config/route.php');
     <script src="../../js/loaderhandler.js"></script>
 
 </head>
-<?php 
+<?php
 
 if (isset($_GET['ppid'])) {
     $ppid = $_GET['ppid'];
     // echo $ppid;
 } else {
     $location = __URL_propertypagepage_;
-    header('Location:'. $location);
+    header('Location:' . $location);
 }
 ?>
+
 <body>
+    <?php
+    if (isset($_SESSION["token"])) {
+        echo '<meta name="token" content="' . $_SESSION["token"] . '">';
+
+    }
+    ?>
     <?php include('../compoent/mainheader.php'); ?>
     <section>
         <?php include('../compoent/findingheader.php'); ?>
     </section>
-
+    <section>
+        <?php include('../../pages/compoent/progressBar1.php'); ?>
+    </section>
     <section class="displayScreen">
         <!-- Dashboard -->
         <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
@@ -200,7 +215,7 @@ if (isset($_GET['ppid'])) {
                     <div class="col-md align-items-end">
                         <div class="form-group">
                             <button id="submit" value="submit" class="form-control btn btn-primary">
-                            submit</button>
+                                submit</button>
                         </div>
                     </div>
                 </section>
@@ -211,25 +226,6 @@ if (isset($_GET['ppid'])) {
     <?php include('../compoent/placemap.php'); ?>
     <?php include('../compoent/footer.php'); ?>
 
-
-    <script src="../../js/jquery.min.js"></script>
-    <script src="../../js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="../../js/popper.min.js"></script>
-    <script src="../../js/bootstrap.min.js"></script>
-    <script src="../../js/jquery.easing.1.3.js"></script>
-    <script src="../../js/jquery.waypoints.min.js"></script>
-    <script src="../../js/jquery.stellar.min.js"></script>
-    <script src="../../js/owl.carousel.min.js"></script>
-    <script src="../../js/jquery.magnific-popup.min.js"></script>
-    <script src="../../js/aos.js"></script>
-    <script src="../../js/jquery.animateNumber.min.js"></script>
-    <script src="../../js/bootstrap-datepicker.js"></script>
-    <script src="../../js/jquery.timepicker.min.js"></script>
-    <script src="../../js/scrollax.min.js"></script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="../../js/google-map.js"></script>
-    <script src="../../js/main.js"></script>
 </body>
 
 </html>
@@ -248,7 +244,7 @@ if (isset($_GET['ppid'])) {
         fieEventProcessing();
 
         $("#submit").click(function () {
-           
+
             console.log("property Update Clicked");
             updateproperty();
         });
@@ -264,10 +260,11 @@ if (isset($_GET['ppid'])) {
     function updateproperty() {
         $(document).ready(function () {
             var ppid = $("#pp_id").val();
-
+            const token = $('meta[name="token"]').attr("content");
             $.ajax({
                 url: __URL_include_property_,
                 type: "POST",
+                headers: { token: token },
                 data: {
                     key: "propertyStatusUpdate",
                     password: _AUTH_PASSWORD_,
@@ -299,10 +296,11 @@ if (isset($_GET['ppid'])) {
 
     function deleteImage(id, name) {
         //   alert(id);
-
+        const token = $('meta[name="token"]').attr("content");
         $.ajax({
             url: "delete.php",
             type: "POST",
+            headers: { token: token },
             data: { name: name, mdid: id, mediatype: "vid" },
             dataType: "json",
             success: function (jsondata) {
@@ -323,8 +321,10 @@ if (isset($_GET['ppid'])) {
     function loadPhotoMedia() {
         var totaldatabasephotosizecount = 0;
         var ppid = $("#pp_id").val();
+        const token = $('meta[name="token"]').attr("content");
         $.ajax({
             url: "load.php",
+            headers: { token: token },
             type: "POST",
             dataType: "json",
             data: {
@@ -415,11 +415,12 @@ if (isset($_GET['ppid'])) {
 
         $(document).ready(function () {
 
-
+            const token = $('meta[name="token"]').attr("content");
             $.ajax({
                 url: "upload.php",
                 data: formData,
                 type: "POST",
+                headers: { token: token },
                 contentType: false,
                 processData: false,
                 dataType: "json",

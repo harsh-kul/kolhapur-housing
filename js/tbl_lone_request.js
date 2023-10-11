@@ -1,8 +1,7 @@
 $(document).ready(function () {
-  loadAlllonerequest();
   loadloneType();
   ////Docament Ready Code
-  //  loaddataoflonerequest();
+   loaddataoflonerequest();
   $("#btn_save_lonerequest").click(function (e) {
     validateLonaRequestData();
     e.preventDefault();
@@ -28,14 +27,16 @@ function loaddataoflonerequest() {
     console.log("lonerequest id is null Clicked");
   } else {
     $(document).ready(function () {
+      const token = $('meta[name="token"]').attr("content");
       console.log("lonerequest id data Loading");
       $.ajax({
-        url: __URL_include_loan_request_,
+        url: _URL_include_loan_request,
         type: "POST",
+        headers: {token : token},
         data: {
           key: "getone",
-          password: _AUTH_PASSWORD_,
-          username: _AUTH_USERNAME_,
+          password: AUTH_PASSWORD,
+          username: AUTH_USERNAME,
           lonerequestid: lonerequestid,
         },
         dataType: "json",
@@ -95,13 +96,15 @@ function updatelonerequest() {
     lr_emi: lr_emi,
   };
   $(document).ready(function () {
+    const token = $('meta[name="token"]').attr("content");
     $.ajax({
-      url: __URL_include_loan_request_,
+      url: _URL_include_loan_request,
       type: "POST",
+      headers: {token : token},
       data: {
         key: "updatedata",
-        password: _AUTH_PASSWORD_,
-        username: _AUTH_USERNAME_,
+        password: AUTH_PASSWORD,
+        username: AUTH_USERNAME,
         lonerequest_data: JSON.stringify(lonerequestobject),
       },
       dataType: "json",
@@ -134,7 +137,7 @@ function updatelonerequest() {
         console.log("userUpdatedjs Compelete");
         console.log("lonerequest id data Update  :complete  ");
         localStorage.setItem("userid", NaN);
-        window.location.href = __URL_loanlistpage_;
+        window.location.href = _URL_loanlistpage;
       },
     });
   });
@@ -142,13 +145,15 @@ function updatelonerequest() {
 //////////// Update Data   Close  ////////////////////////////
 //////////// Save Data    ////////////////////////////
 function savelonerequest(lonerequestobject) {
+  const token = $('meta[name="token"]').attr("content");
   $.ajax({
-    url: __URL_include_loan_request_,
+    url: _URL_include_loan_request,
     type: "POST",
+    headers: {token : token},
     data: {
       key: "savedata",
-      password: _AUTH_PASSWORD_,
-      username: _AUTH_USERNAME_,
+      password: AUTH_PASSWORD,
+      username: AUTH_USERNAME,
       lonerequest_data: JSON.stringify(lonerequestobject),
     },
     dataType: "json",
@@ -166,6 +171,7 @@ function savelonerequest(lonerequestobject) {
       $("#lonerequest_lr_age").val("");
       $("#lonerequest_lr_income").val("");
       $("#lonerequest_lr_emi").val("");
+      AlertHandler.getsuccessAlert(StringHandler.SAVE_SUCCESS);
     },
     error: function (data) {
       // alert(data.responseText);
@@ -309,81 +315,20 @@ function validateLonaRequestData() {
   }
 }
 //////////// Save Data   Close   ////////////////////////////
-//////////// Load All Data    ////////////////////////////
-function loadAlllonerequest() {
-  // alert("loadAlllonerequest");
-  var loandataTableHandler = new DataTableHandler("loanTable");
-  loandataTableHandler.inlizlaiseDataTable();
-  $(document).ready(function () {
-    $.ajax({
-      url: __URL_include_loan_request_,
-      type: "POST",
-      data: {
-        key: "getalldata",
-        password: _AUTH_PASSWORD_,
-        username: _AUTH_USERNAME_,
-      },
-      dataType: "json",
-      success: function (datajson, status, xhr) {
-        if (datajson["status"]) {
-          var data = JSON.parse(datajson["data"]);
-          console.log("lonerequest id data Load All  :success ");
-          console.log(data);
-          loandataTableHandler.CleanAndRefreshDataTable();
-          if (data.length > 0) {
-            for (var i = 0; i < data.length; i++) {
-              loandataTableHandler.addRowInDataTable([
-                i + 1,
-                data[i].lr_fname + " " + data[i].lr_lname,
-                data[i].lr_email_id,
-                data[i].lr_mobile_no,
-                data[i].lr_resident_type,
-                data[i].lr_pp_loc,
-                data[i].lr_req_type,
-                data[i].lr_amt,
-                data[i].lr_req_type,
-                data[i].lr_amt,
-                '<a href="#" class="btn btn-sm btn-neutral" onclick="goforupdaterecord(' +
-                  data[i].lr_id +
-                  ')">View</a><button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover" onclick="updaterecord(' +
-                  data[i].lr_id +
-                  ')"> <i class="bi bi-trash"></i></button>',
-              ]);
 
-              // +data[i].lr_amt+"</td><td>"+data[i].lr_tenure+"</td><td>"+data[i].lr_age+"</td><td>"+data[i].lr_pp_cost+"</td><td>"+data[i].lr_currently_employeed+"</td><td>"+data[i].lr_income+"</td><td>"+data[i].lr_emi+"</td></tr>");
-            }
-          } else {
-            loandataTableHandler.CleanAndRefreshDataTable();
-          }
-        } else {
-          console.log("No ReCord");
-          console.log(datajson);
-          loandataTableHandler.CleanAndRefreshDataTable();
-        }
-      },
-      error: function (data) {
-        console.log(
-          "lonerequest id data Load All  :error " + data.responseText
-        );
-      },
-      complete: function () {
-        console.log("lonerequest id data Load All  :complete ");
-      },
-    });
-  });
-}
-//////////// Load All Data Close    ////////////////////////////
 //////////// Fetch and  Data     ////////////////////////////
 function updaterecord(id, type) {
   $(document).ready(function () {
     var userobject = { tbl_lone_requestid: id };
+    const token = $('meta[name="token"]').attr("content");
     $.ajax({
-      url: __URL_include_loan_request_,
+      url: _URL_include_loan_request,
       type: "POST",
+      headers: {token : token},
       data: {
         key: "deletedata",
-        password: _AUTH_PASSWORD_,
-        username: _AUTH_USERNAME_,
+        password: AUTH_PASSWORD,
+        username: AUTH_USERNAME,
         tbl_lone_request_name: JSON.stringify(userobject),
       },
       dataType: "json",
@@ -407,14 +352,18 @@ function updaterecord(id, type) {
 //////////// Fetch and  Data     ////////////////////////////
 
 function loadloneType() {
+
+  // alert("okkkk");
+  const token = $('meta[name="token"]').attr("content");
   $.ajax({
-    url: __URL_include_loan_type_,
+    url: _URL_include_loan_type,
     type: "POST",
+    headers: {token : token},
     dataType: "json",
     data: {
       key: "getalldata",
-      password: _AUTH_PASSWORD_,
-      username: _AUTH_USERNAME_,
+      password: AUTH_PASSWORD,
+      username: AUTH_USERNAME,
     },
     success: function (data1, status, xhr) {
       console.log("lone type type  :success ");

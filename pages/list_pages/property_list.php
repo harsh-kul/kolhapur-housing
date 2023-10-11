@@ -1,4 +1,19 @@
-<?php include('../../config/route.php'); ?>
+<?php  
+// session_start();
+if (session_status() == PHP_SESSION_NONE) {
+	session_start();
+}
+
+// if (isset($_GET['get_token']) && empty($_SESSION["token"])) {
+	$token = bin2hex(random_bytes(64));
+	$_SESSION["token"] = $token;
+// }
+
+// if (isset($_GET['kill_token'])) {
+// 	unset($_SESSION["token"]);
+// 	session_destroy();
+// }
+include('../../config/route.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,8 +21,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo __WEBSITE__TITLE__ ;?></title>
-    <?php include('../compoent/listheader.php') ?>
+    
+    <?php
+    include('../compoent/listheader.php') ?>
     <link rel="stylesheet" href="../../css/internal/dashboard.css">
     <link rel="stylesheet" href="../../css/internal/dashboard_index.css">
     <script src="../../js/property.js"></script>
@@ -15,10 +31,18 @@
     <script src="../../js/route.js"></script>
     <script src="../../js/datatablehandler.js"></script>
     <script src="../../js/loaderhandler.js"></script>
+    <title><?php echo __WEBSITE__TITLE__ ;?></title>
 
 </head>
 
 <body>
+    
+<?php
+	if (isset($_SESSION["token"])) {
+		echo '<meta name="token" content="' . $_SESSION["token"] . '">';
+
+	}
+	?>
     <script>
 $(document).ready(function () {
         //var screenLoader = new ScreenLoaderHandler("displayScreen");

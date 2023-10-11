@@ -33,10 +33,12 @@ $(document).ready(function () {
       console.log("property id is null Clicked");
     } else {
       $(document).ready(function () {
+        const token = $('meta[name="token"]').attr("content");
         console.log("property id data Loading");
         $.ajax({
           url: "../../php/property.php",
           type: "POST",
+          headers: {token : token},
           data: {
             key: "getone",
             password: _AUTH_PASSWORD_,
@@ -157,9 +159,11 @@ $(document).ready(function () {
       deleted_on: deleted_on,
       triggered_on: triggered_on,
     };
+    const token = $('meta[name="token"]').attr("content");
     $.ajax({
       url: "../../php/property.php",
       type: "POST",
+      headers: {token : token},
       data: {
         key: "updatedata",
         password: _AUTH_PASSWORD_,
@@ -279,10 +283,12 @@ $(document).ready(function () {
       deleted_on: deleted_on,
       triggered_on: triggered_on,
     };
+    const token = $('meta[name="token"]').attr("content");
     // alert("propertyobject" + propertyobject);
     $.ajax({
       url: "../include/property.php",
       type: "POST",
+      headers: {token : token},
       data: {
         key: "savedata",
         password: _AUTH_PASSWORD_,
@@ -367,9 +373,11 @@ $(document).ready(function () {
   //////////// Save Data   Close   ////////////////////////////
   //////////// Load All Data    ////////////////////////////
   function loadAllproperty() {
+    const token = $('meta[name="token"]').attr("content");
     $.ajax({
       url: "../../php/property.php",
       type: "POST",
+      headers: {token : token},
       data: {
         key: "getalldata",
         password: _AUTH_PASSWORD_,
@@ -476,9 +484,11 @@ $(document).ready(function () {
   function updaterecord(id, type) {
     $(document).ready(function () {
       var userobject = { id: id };
+      const token = $('meta[name="token"]').attr("content");
       $.ajax({
         url: "../../php/property.php",
         type: "POST",
+        headers: {token : token},
         data: {
           key: "deletedata",
           password: _AUTH_PASSWORD_,
@@ -510,10 +520,12 @@ $(document).ready(function () {
   //////////// Fetch and  Data     ////////////////////////////
   function loadViewMedia(){
     // alert("loadMedia");
+    const token = $('meta[name="token"]').attr("content");
     $.ajax({
         url: "../include/viewmedia.php",
         type: "POST",
         dataType: "json",
+        headers: {token : token},
         data: {
           key: "getalldata",
           password: _AUTH_PASSWORD_,
@@ -582,9 +594,11 @@ function getimagename(imagename){
 }
 
   function loadacproperty() {
+    const token = $('meta[name="token"]').attr("content");
     $.ajax({
       url: "../../include/property.php",
       type: "POST",
+      headers: {token : token},
       data: {
         key: "acproperty",
         password: _AUTH_PASSWORD_,
@@ -690,9 +704,11 @@ function getimagename(imagename){
 
 
   function rjpeoperty() {
+    const token = $('meta[name="token"]').attr("content");
     $.ajax({
       url: "../../include/property.php",
       type: "POST",
+      headers: {token : token},
       data: {
         key: "rjpeoperty",
         password: _AUTH_PASSWORD_,
@@ -787,10 +803,12 @@ function getimagename(imagename){
 
 
   function loadcrproperty() {
+    const token = $('meta[name="token"]').attr("content");
     // alert('cr property');
     $.ajax({
       url: "../../include/property.php",
       type: "POST",
+      headers: {token : token},
       data: {
         key: "openProperty",
         password: _AUTH_PASSWORD_,
@@ -870,10 +888,12 @@ function getimagename(imagename){
     var propertyobject = {
       pk_ppid: pk_ppid,
     };
+    const token = $('meta[name="token"]').attr("content");
     // alert("propertyobject" + propertyobject);
     $.ajax({
       url: "../../include/property.php",
       type: "POST",
+      headers: {token : token},
       data: {
         key: "updateacProperty",
         password: _AUTH_PASSWORD_,
@@ -934,10 +954,12 @@ function getimagename(imagename){
     var propertyobject = {
       pk_ppid: pk_ppid,
     };
+    const token = $('meta[name="token"]').attr("content");
     // alert("propertyobject" + propertyobject);
     $.ajax({
       url: "../../include/property.php",
       type: "POST",
+      headers: {token : token},
       data: {
         key: "updaterjProperty",
         password: _AUTH_PASSWORD_,

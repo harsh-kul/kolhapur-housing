@@ -19,16 +19,19 @@ function goforupdaterecord(id) {
 //////////// Go For Update  Here ////////////////////////////
 //////////// Load Of Singlge data For Show  Here ////////////////////////////
 function loaddataofregistration() {
+  // const token = $('meta[name="token"]').attr("content");
   var registrationid = parseInt(localStorage.getItem("registrationid"));
   console.log("registrationid  " + registrationid);
   if (isNaN(registrationid)) {
     console.log("registration id is null Clicked");
   } else {
     $(document).ready(function () {
+      const token = $('meta[name="token"]').attr("content");
       console.log("registration id data Loading");
       $.ajax({
         url: "../../php/registration.php",
         type: "POST",
+        headers: {token : token},
         data: {
           key: "getone",
           password: _AUTH_PASSWORD_,
@@ -79,6 +82,7 @@ function loaddataofregistration() {
 //////////// Load Of Singlge data For Show  Here   Close ////////////////////////////
 //////////// Update Data    ////////////////////////////
 function updateregistration() {
+  const token = $('meta[name="token"]').attr("content");
   var userid = parseInt(localStorage.getItem("registrationid"));
   var pk_rgid = $("#registration_pk_rgid").val();
   var fk_sfid = $("#registration_fk_sfid").val();
@@ -131,6 +135,7 @@ function updateregistration() {
   $.ajax({
     url: "../../php/registration.php",
     type: "POST",
+    headers: {token : token},
     data: {
       key: "updatedata",
       password: _AUTH_PASSWORD_,
@@ -180,9 +185,11 @@ function updateregistration() {
 //////////// Save Data   Close   ////////////////////////////
 //////////// Load All Data    ////////////////////////////
 function loadAllregistration() {
+  const token = $('meta[name="token"]').attr("content");
   $.ajax({
     url: "../../php/registration.php",
     type: "POST",
+    headers: {token : token},
     data: {
       key: "getalldata",
       password: _AUTH_PASSWORD_,
@@ -273,11 +280,14 @@ function loadAllregistration() {
 //////////// Load All Data Close    ////////////////////////////
 //////////// Fetch and  Data     ////////////////////////////
 function updaterecord(id, type) {
+  // const token = $('meta[name="token"]').attr("content");
   $(document).ready(function () {
+    const token = $('meta[name="token"]').attr("content");
     var userobject = { id: id };
     $.ajax({
       url: "../../php/registration.php",
       type: "POST",
+      headers: {token : token},
       data: {
         key: "deletedata",
         password: _AUTH_PASSWORD_,
@@ -311,6 +321,7 @@ function goforupdaterecord(id) {
 //////////// Fetch and  Data     ////////////////////////////
 
 function login() {
+  const token = $('meta[name="token"]').attr("content");
   // swal("fgcvhbj");
   var rg_email = $("#login_email").val();
   var rg_password = $("#login_password").val();
@@ -328,6 +339,7 @@ function login() {
         $.ajax({
           url: "../include/registration.php",
           type: "POST",
+          headers: {token : token},
           dataType: "json",
           data: {
             key: "login",
@@ -352,8 +364,8 @@ function login() {
             }
           },
           error: function (data, status, xhr) {
-            // alert(data.responseText);
-            console.log("registration id data error  :error " + data);
+            alert(data.responseText);
+            console.log("registration id data error  :error " + data.responseText);
           },
           complete: function () {
             console.log("registration id data complte  :complete ");
@@ -434,6 +446,7 @@ function SaveRegData(
   rg_address,
   rg_password
 ) {
+  const token = $('meta[name="token"]').attr("content");
   var allVals = [];
   $(".registration_roles :checked").each(function () {
     allVals.push($(this).val());
@@ -483,6 +496,7 @@ function SaveRegData(
       url: __URL_include_registration_,
       type: "POST",
       dataType: "json",
+      headers: {token : token},
       data: {
         key: "savedata",
         password: _AUTH_PASSWORD_,
@@ -511,8 +525,8 @@ function SaveRegData(
       },
       error: function (data) {
 
-        console.log("registration id data Save  :error " + data['status']);
-        console.log(data.responseText);
+        console.log("registration id data Save  :error " + data.responseText);
+        console.log(data);
       },
       complete: function () {
         console.log("registration id data Save  :complete ");

@@ -1,28 +1,23 @@
 $(document).ready(function () {
   showMedia();
   loadCount();
+  loadDistinctLandmark();
   $("#logOutBtn").click(function (e) {
     // alert("logOut Click");
     indexlogout();
   });
 
-  $(document).ready(function () {
-    $("#subscribe-btn").click(function (e) {
-      // if (
-      //   !ValidationHandler.checkVarIsNull(rg_email) &&
-      //   !ValidationHandler.checkVarIsNull(rg_password)
-      // ) {
-      // } else {
-        AlertHandler.getsuccessAlert(StringHandler.NEWSLETTER_SUCCESS);
-      // }
-    });
+  $("#subscribe-btn").click(function (e) {
+    AlertHandler.getsuccessAlert(StringHandler.NEWSLETTER_SUCCESS);
   });
 });
 //////////// Docuemnt  Close Here ////////////////////////////
 function loadCount() {
+  const token = $('meta[name="token"]').attr("content");
   $.ajax({
     url: __URL_include_index_,
     type: "POST",
+    headers: {token : token},
     data: {
       key: "loadcount",
       password: _AUTH_PASSWORD_,
@@ -64,11 +59,13 @@ function loadCount() {
   });
 }
 function showMedia() {
-  // alert("showMedia");
+  const token = $('meta[name="token"]').attr("content");
+  // alert("token " + token);
 
   $.ajax({
-    url: __URL_include_index_,
     type: "POST",
+    url: __URL_include_index_,    
+    headers: {token : token},
     data: {
       key: "showMedia",
       password: _AUTH_PASSWORD_,
@@ -102,11 +99,13 @@ function showMedia() {
 }
 
 function indexlogout() {
-  alert("logoutt fuction call");
+  const token = $('meta[name="token"]').attr("content");
+  // alert("logoutt fuction call");
   $.ajax({
     url: "include/registration.php",
     type: "POST",
     dataType: "json",
+    headers: {token : token},
     data: {
       key: "logout",
       password: _AUTH_PASSWORD_,
@@ -130,10 +129,12 @@ function showSingleProduct(id) {
 
 function showMediaTypeWise() {
   // alert("showMedia");
+  const token = $('meta[name="token"]').attr("content");
 
   $.ajax({
     url: __URL_include_index_,
     type: "POST",
+    headers: {token : token},
     data: {
       key: "showMedia",
       password: _AUTH_PASSWORD_,
@@ -178,10 +179,11 @@ function showMediaTypeWise() {
 
 function showMediaPopular() {
   // alert("showMedia");
-
+  const token = $('meta[name="token"]').attr("content");
   $.ajax({
     url: __URL_include_index_,
     type: "POST",
+    headers: {token : token},
     data: {
       key: "showMedia",
       password: _AUTH_PASSWORD_,
@@ -211,6 +213,47 @@ function showMediaPopular() {
               "</div>"
           );
           // console.log(data[i]);
+        }
+      }
+    },
+    error: function (data) {
+      console.log("property id data eroor  :error " + data.responseText);
+    },
+    complete: function () {
+      console.log("property id data complte  :complete ");
+      localStorage.setItem("propertyid", NaN);
+    },
+  });
+}
+
+function loadDistinctLandmark() {
+  // alert("showMedia");
+  const token = $('meta[name="token"]').attr("content");
+  $.ajax({
+    url: __URL_include_index_,
+    type: "POST",
+    headers: {token : token},
+    data: {
+      key: "loadDistinctLandmark",
+      password: _AUTH_PASSWORD_,
+      username: _AUTH_USERNAME_,
+    },
+    dataType: "json",
+    success: function (data1, status, xhr) {
+      console.log("property id data success  :success " + data1);
+      // window.location.href = "../pages/list_pages/admin_request_list.php";
+      data = JSON.parse(data1["data"]);
+      console.log("data.length" + data);
+      if (data.length > 0) {
+        console.log("property type  :lenght   " + data[0]);
+        for (var i = 0; i < data.length; i++) {
+          $("#landmark").append(
+            "<option value=" +
+              data[i].pp_landmark +
+              " style='color: black;' >" +
+              data[i].pp_landmark +
+              " </option>"
+          );
         }
       }
     },

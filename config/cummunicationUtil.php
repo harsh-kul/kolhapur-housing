@@ -1,7 +1,7 @@
 <?php
-// ini_set ('display_errors', 1);  
-// ini_set ('display_startup_errors', 1);  
-// error_reporting (E_ALL);
+ini_set ('display_errors', 1);  
+ini_set ('display_startup_errors', 1);  
+error_reporting (E_ALL);
 // use PHPMailer\PHPMailer\PHPMailer;
 // use PHPMailer\PHPMailer\SMTP;
 // use PHPMailer\PHPMailer\Exception;
@@ -17,7 +17,8 @@ class cummunicationUtil
 
         $to = $mailId; // <– replace with your address here
         $subject = "Registration OTP For Housing Kolhapur";
-        $message = "Thank you for choosing Housing Kolhapur. Use the following OTP  to complete your Sign Up procedures. OTP is ". $otp ;
+        $message = "<p>Thank you for choosing Housing Kolhapur. Use the following OTP ".
+                    "to complete your Sign Up procedures. OTP is ". $otp ."</p>";
         // $from = 'k11shrutika@gmail.com';
         $headers = ' ' ;
         mail($to, $subject, $message, $headers);

@@ -1,49 +1,58 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();//Start session if none exists/already started
+}
+$headers = getallheaders();
 include('../config/dbservice.php');
 include('../utils/php/loghandler.php');
 include('../../config/datehandler.php');
 $dhandler = new DateHandler();
 $loggeroject = new Logger("property");
 $dbservice = new DB();
-if ($_POST['username'] == "shankar" && $_POST['password'] == "shankar") {
-	$loggeroject->printLogInClassfunction("In", "Auth Switch", ".tbl_property.php");
-	switch ($_POST['key']) {
-		case _GETALL_:
-			fetchAllData($dbservice,$dhandler);
-			break;
-		case _DELETEDATA_:
-			deleteData($dbservice,$dhandler);
-			break;
-		case _GETONE_:
-			fetchoneData($dbservice,$dhandler);
-			break;
-		case _UPDATEDATA_:
-			updateData($dbservice,$dhandler);
-			break;
-		case _SAVEDATA_:
-			saveData($dbservice,$dhandler);
-			break;
-		case _AC_PROPERTY_:
-			acceptProperty($dbservice,$dhandler);
-			break;
-		case _RJ_PROPERTY_:
-			rejectProperty($dbservice,$dhandler);
-			break;
-		case _OPEN_STATUS_:
-			openStatusProperty($dbservice,$dhandler);
-			break;
-		case _UPDATEFORACC_:
-			updateDataForAcc($dbservice,$dhandler);
-			break;
-	
+if (isset($headers['token'])) {
+	$header_token = $headers['token'];
+	if ($header_token == $_SESSION['token']) {
+		if ($_POST['username'] == "shankar" && $_POST['password'] == "shankar") {
+			$loggeroject->printLogInClassfunction("In", "Auth Switch", ".tbl_property.php");
+			switch ($_POST['key']) {
+				case _GETALL_:
+					fetchAllData($dbservice,$dhandler);
+					break;
+				case _DELETEDATA_:
+					deleteData($dbservice,$dhandler);
+					break;
+				case _GETONE_:
+					fetchoneData($dbservice,$dhandler);
+					break;
+				case _UPDATEDATA_:
+					updateData($dbservice,$dhandler);
+					break;
+				case _SAVEDATA_:
+					saveData($dbservice,$dhandler);
+					break;
+				case _AC_PROPERTY_:
+					acceptProperty($dbservice,$dhandler);
+					break;
+				case _RJ_PROPERTY_:
+					rejectProperty($dbservice,$dhandler);
+					break;
+				case _OPEN_STATUS_:
+					openStatusProperty($dbservice,$dhandler);
+					break;
+				case _UPDATEFORACC_:
+					updateDataForAcc($dbservice,$dhandler);
+					break;
+			
+			}
+		} else {
+			echo ('HTTP/1.0 401 Unauthorized');
+		}
 	}
-} else {
-	echo ('HTTP/1.0 401 Unauthorized');
+	else{
+		echo "ERROR: Tokens dont match";
+		exit;
+	}
 }
-
-
-
 
 
 

@@ -27,10 +27,12 @@ function loaddataofpropertytype() {
     console.log("propertytype id is null Clicked");
   } else {
     $(document).ready(function () {
+      const token = $('meta[name="token"]').attr("content");
       console.log("propertytype id data Loading");
       $.ajax({
         url: "../../php/propertytype.php",
         type: "POST",
+        headers: {token : token},
         data: {
           key: "getone",
           password: _AUTH_PASSWORD_,
@@ -96,9 +98,11 @@ function updatepropertytype() {
     deleted_on: deleted_on,
     triggered_on: triggered_on,
   };
+  const token = $('meta[name="token"]').attr("content");
   $.ajax({
     url: "../../php/propertytype.php",
     type: "POST",
+    headers: {token : token},
     data: {
       key: "updatedata",
       password: _AUTH_PASSWORD_,
@@ -162,9 +166,11 @@ function savepropertytype() {
     deleted_on: deleted_on,
     triggered_on: triggered_on,
   };
+  const token = $('meta[name="token"]').attr("content");
   $.ajax({
     url: "../../php/propertytype.php",
     type: "POST",
+    headers: {token : token},
     data: {
       key: "savedata",
       password: _AUTH_PASSWORD_,
@@ -200,9 +206,11 @@ function savepropertytype() {
 //////////// Save Data   Close   ////////////////////////////
 //////////// Load All Data    ////////////////////////////
 function loadAllpropertytype() {
+  const token = $('meta[name="token"]').attr("content");
   $.ajax({
     url: "../../php/propertytype.php",
     type: "POST",
+    headers: {token : token},
     data: {
       key: "getalldata",
       password: _AUTH_PASSWORD_,
@@ -272,10 +280,12 @@ function loadAllpropertytype() {
 //////////// Fetch and  Data     ////////////////////////////
 function updaterecord(id, type) {
   $(document).ready(function () {
+    const token = $('meta[name="token"]').attr("content");
     var userobject = { id: id };
     $.ajax({
       url: "../../php/propertytype.php",
       type: "POST",
+      headers: {token : token},
       data: {
         key: "deletedata",
         password: _AUTH_PASSWORD_,

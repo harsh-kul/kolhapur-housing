@@ -13,9 +13,11 @@ $(document).ready(function () {
 
 function showMedia() {
   // alert("dfghj");
+  const token = $('meta[name="token"]').attr("content");
   $.ajax({
     url: __URL_include_buy_pp_index_,
     type: "POST",
+    headers: {token : token},
     data: {
       key: "showMedia",
       password: _AUTH_PASSWORD_,
@@ -59,10 +61,12 @@ function showMedia() {
 }
 
 function indexlogout() {
+  const token = $('meta[name="token"]').attr("content");
   $.ajax({
     url: "include/registration.php",
     type: "POST",
     dataType: "json",
+    headers: {token : token},
     data: {
       key: "logout",
       password: _AUTH_PASSWORD_,
@@ -85,10 +89,11 @@ function showSingleProduct(id) {
 }
 
 function showMediaTypeWise() {
-
+  const token = $('meta[name="token"]').attr("content");
   $.ajax({
     url: __URL_include_buy_pp_index_,
     type: "POST",
+    headers: {token : token},
     data: {
       key: "loadMediaPriceWise",
       password: _AUTH_PASSWORD_,
@@ -219,10 +224,11 @@ function showMediaTypeWise() {
 }
 
 function showMediaPopular() {
-
+  const token = $('meta[name="token"]').attr("content");
   $.ajax({
     url: __URL_include_buy_pp_index_,
     type: "POST",
+    headers: {token : token},
     data: {
       key: "loadMediaCategoryWise",
       password: _AUTH_PASSWORD_,

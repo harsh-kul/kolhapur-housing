@@ -30,9 +30,11 @@ console.log("lonetype id is null Clicked");
  else{
 $(document).ready(function() {
 console.log("lonetype id data Loading");
+const token = $('meta[name="token"]').attr("content");
 $.ajax({
 url: "../../php/lonetype.php",
 type: "POST",
+headers: {token : token},
 data: {
 "key":"getone",
 "password":_AUTH_PASSWORD_,
@@ -82,9 +84,11 @@ is_deleted : is_deleted,
 deleted_on : deleted_on,
 triggered_on : triggered_on,
 }
+const token = $('meta[name="token"]').attr("content");
 $.ajax({
 url: __URL_include_loan_type_,
 type: "POST",
+headers: {token : token},
 data: {
 "key":"updatedata",
 "password":_AUTH_PASSWORD_,
@@ -133,9 +137,11 @@ is_deleted : is_deleted,
 deleted_on : deleted_on,
 triggered_on : triggered_on,
 }
+const token = $('meta[name="token"]').attr("content");
 $.ajax({
 url: __URL_include_loan_type_,
 type: "POST",
+headers: {token : token},
 data: {
 "key":"savedata",
 "password":_AUTH_PASSWORD_,
@@ -165,9 +171,11 @@ window.location.href = __URL_loanlistpage_;
  //////////// Save Data   Close   ////////////////////////////
  //////////// Load All Data    ////////////////////////////
 function loadAlllonetype(){
+  const token = $('meta[name="token"]').attr("content");
  $.ajax({
 url: __URL_include_loan_type_,
 type: "POST",
+headers: {token : token},
 data: {
 "key":"getalldata",
 "password":_AUTH_PASSWORD_,
@@ -204,10 +212,12 @@ console.log("lonetype id data Load All  :complete ");
  //////////// Fetch and  Data     ////////////////////////////   
 function  updaterecord(id,type){
  $(document).ready(function() {
+  const token = $('meta[name="token"]').attr("content");
  var userobject = {id : id}
 $.ajax({
 url: __URL_include_loan_type_,
 type: "POST",
+headers: {token : token},
  data: {
 "key":"deletedata",
 "password":_AUTH_PASSWORD_,

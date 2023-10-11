@@ -1,4 +1,19 @@
-<?php include('../../config/route.php'); ?>
+<?php  
+// session_start();
+if (session_status() == PHP_SESSION_NONE) {
+	session_start();
+}
+
+// if (isset($_GET['get_token']) && empty($_SESSION["token"])) {
+	$token = bin2hex(random_bytes(64));
+	$_SESSION["token"] = $token;
+// }
+
+// if (isset($_GET['kill_token'])) {
+// 	unset($_SESSION["token"]);
+// 	session_destroy();
+// }
+include('../../config/route.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +28,7 @@
     <script src="../../js/config.js"></script>
     <script src="../../js/route.js"></script>
     <script src="../../js/datatablehandler.js"></script>
-    <script src="../../js/tbl_lone_request.js"></script>
+    <script src="../../js/tbl_lone_list.js"></script>
     <script src="../../js/loaderhandler.js"></script>
 
 </head>
@@ -21,6 +36,12 @@
 <body>
     
 
+<?php
+	if (isset($_SESSION["token"])) {
+		echo '<meta name="token" content="' . $_SESSION["token"] . '">';
+
+	}
+	?>
 <section class="displayScreen">
     <!-- Dashboard -->
     <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">

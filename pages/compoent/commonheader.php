@@ -14,6 +14,7 @@
 <script src=<?php echo _JS_PROGRESS_BAR_;?>></script>
 <script src=<?php echo _JS_INDEX_;?>></script>
 <script src=<?php echo _JS_MAIN_;?>></script>
+<script src=<?php echo _JS_DATATABLE_;?>></script>
 
 
 
@@ -55,6 +56,7 @@
     <link rel="stylesheet" href=<?php echo __URL_CSS_FLATICON; ?>>
     <link rel="stylesheet" href=<?php echo __URL_CSS_ICOMOON; ?>>
     <link rel="stylesheet" href=<?php echo __URL_CSS_STYLE; ?>>
+    <!-- <link rel="stylesheet" href=<?php //echo __URL_CSS_GALLARY; ?>> -->
     
 
     <title><?php echo __WEBSITE__TITLE__ ;?></title>

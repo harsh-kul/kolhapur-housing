@@ -12,10 +12,12 @@ $(document).ready(function () {
       lonetype: lonetype,
     };
     // alert(JSON.stringify(registrationobject));
+    const token = $('meta[name="token"]').attr("content");
     $.ajax({
       url: "../../include/report.php",
       type: "POST",
       dataType: "json",
+      headers: {token : token},
       data: {
         key: "loaddatewiselonerequest",
         password: _AUTH_PASSWORD_,
@@ -85,11 +87,13 @@ $(document).ready(function () {
       toDate: toDate,
       statusId: statusId,
     };
+    const token = $('meta[name="token"]').attr("content");
     // alert(JSON.stringify(registrationobject));
     $.ajax({
-      url: "../../include/report.php",
+      url: __URL_include_report_,//"../../include/report.php",
       type: "POST",
       dataType: "json",
+      headers: {token : token},
       data: {
         key: "loaddatewisereport",
         password: _AUTH_PASSWORD_,
@@ -139,7 +143,7 @@ $(document).ready(function () {
       },
       error: function (data) {
         console.log(data.responseText);
-        console.log('<div class="text-center">error ' + data + "here</div>");
+        console.log('<div class="text-center">error ' + data.responseText + "here</div>");
       },
       complete: function () {
         console.log('<div class="text-center">Compelete here</div>');
@@ -159,10 +163,12 @@ $(document).ready(function () {
       toDate: toDate,
     };
     // alert(registrationobject);
+    const token = $('meta[name="token"]').attr("content");
     $.ajax({
       url: "../../include/report.php",
       type: "POST",
       dataType: "json",
+      headers: {token : token},
       data: {
         key: "loaddatewiseuserreport",
         password: _AUTH_PASSWORD_,

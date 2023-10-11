@@ -1,24 +1,39 @@
 <?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();//Start session if none exists/already started
+}
+$headers = getallheaders();
 include('../config/dbservice.php');
 include('../utils/php/loghandler.php');
 $loggeroject = new Logger("property");
 $dbservice = new DB();
-if ($_POST['username'] == _AUTH_USERNAME_ && $_POST['password'] == _AUTH_PASSWORD_) {
-    $loggeroject->printLogInClassfunction("In", "Auth Switch", ".tbl_property.php");
-    switch ($_POST['key']) {
 
-        case _LOAD_USER_COUNT_:
-            loadUserCount($dbservice);
-            break;
-        case _LOAD_RECENT_:
-            loadRecent($dbservice);
-            break;
-
-
+if (isset($headers['token'])) {
+	$header_token = $headers['token'];
+	if ($header_token == $_SESSION['token']) {
+        if ($_POST['username'] == _AUTH_USERNAME_ && $_POST['password'] == _AUTH_PASSWORD_) {
+            $loggeroject->printLogInClassfunction("In", "Auth Switch", ".tbl_property.php");
+            switch ($_POST['key']) {
+        
+                case _LOAD_USER_COUNT_:
+                    loadUserCount($dbservice);
+                    break;
+                case _LOAD_RECENT_:
+                    loadRecent($dbservice);
+                    break;
+        
+        
+            }
+        } else {
+            echo ('HTTP/1.0 401 Unauthorized');
+        }
     }
-} else {
-    echo ('HTTP/1.0 401 Unauthorized');
+	else{
+		echo "ERROR: Tokens dont match";
+		exit;
+	}
 }
+
 
 function loadUserCount($dbservice)
 {

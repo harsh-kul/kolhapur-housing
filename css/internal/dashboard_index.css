@@ -3145,7 +3145,6 @@ a {
 .form-control::file-selector-button {
   padding: 0.75rem 1.25rem;
   margin: -0.75rem -1.25rem;
-  -webkit-margin-end: 1.25rem;
   margin-inline-end: 1.25rem;
   color: #16192c;
   background-color: #f5f9fc;
@@ -3171,7 +3170,6 @@ a {
 .form-control::-webkit-file-upload-button {
   padding: 0.75rem 1.25rem;
   margin: -0.75rem -1.25rem;
-  -webkit-margin-end: 1.25rem;
   margin-inline-end: 1.25rem;
   color: #16192c;
   background-color: #f5f9fc;
@@ -3222,14 +3220,12 @@ a {
 .form-control-sm::file-selector-button {
   padding: 0.5rem 1rem;
   margin: -0.5rem -1rem;
-  -webkit-margin-end: 1rem;
   margin-inline-end: 1rem;
 }
 
 .form-control-sm::-webkit-file-upload-button {
   padding: 0.5rem 1rem;
   margin: -0.5rem -1rem;
-  -webkit-margin-end: 1rem;
   margin-inline-end: 1rem;
 }
 
@@ -3243,14 +3239,12 @@ a {
 .form-control-lg::file-selector-button {
   padding: 1rem 1.5rem;
   margin: -1rem -1.5rem;
-  -webkit-margin-end: 1.5rem;
   margin-inline-end: 1.5rem;
 }
 
 .form-control-lg::-webkit-file-upload-button {
   padding: 1rem 1.5rem;
   margin: -1rem -1.5rem;
-  -webkit-margin-end: 1.5rem;
   margin-inline-end: 1.5rem;
 }
 

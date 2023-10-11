@@ -1,5 +1,9 @@
-
-<?php session_start();
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+$token = bin2hex(random_bytes(64));
+$_SESSION["token"] = $token;
 include('../../config/route.php');
 ?>
 <!DOCTYPE html>
@@ -9,7 +13,7 @@ include('../../config/route.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <?php include('../compoent/commonheader.php'); ?>
     <link rel="stylesheet" href="../../css/internal/dashboard.css">
     <link rel="stylesheet" href="../../css/internal/dashboard_index.css">
@@ -24,17 +28,25 @@ include('../../config/route.php');
     </title>
 
 </head>
-<?php 
+<?php
 if (isset($_GET['ppid'])) {
     $ppid = $_GET['ppid'];
 
 } else {
     echo "Please Select Product";
     $location = __URL_propertypagepage_;
-    header('Location:'. $location);
+    header('Location:' . $location);
 }
 ?>
+
 <body>
+
+    <?php
+    if (isset($_SESSION["token"])) {
+        echo '<meta name="token" content="' . $_SESSION["token"] . '">';
+
+    }
+    ?>
     <?php include('../compoent/mainheader.php'); ?>
     <section>
         <?php include('../compoent/findingheader.php'); ?>
@@ -146,7 +158,7 @@ if (isset($_GET['ppid'])) {
                             </div>
 
                         </div>
-                        
+
                         <div class="card shadow border-0 mb-7">
                             <div class="card-header">
                                 <h5 class="mb-0">Upload Photo</h5>
@@ -215,25 +227,6 @@ if (isset($_GET['ppid'])) {
     <?php include('../compoent/footer.php'); ?>
 
 
-    <script src="../../js/jquery.min.js"></script>
-    <script src="../../js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="../../js/popper.min.js"></script>
-    <script src="../../js/bootstrap.min.js"></script>
-    <script src="../../js/jquery.easing.1.3.js"></script>
-    <script src="../../js/jquery.waypoints.min.js"></script>
-    <script src="../../js/jquery.stellar.min.js"></script>
-    <script src="../../js/owl.carousel.min.js"></script>
-    <script src="../../js/jquery.magnific-popup.min.js"></script>
-    <script src="../../js/aos.js"></script>
-    <script src="../../js/jquery.animateNumber.min.js"></script>
-    <script src="../../js/bootstrap-datepicker.js"></script>
-    <script src="../../js/jquery.timepicker.min.js"></script>
-    <script src="../../js/scrollax.min.js"></script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="../../js/google-map.js"></script>
-    <script src="../../js/main.js"></script>
-
 </body>
 
 </html>
@@ -265,10 +258,11 @@ if (isset($_GET['ppid'])) {
     function updateproperty() {
         $(document).ready(function () {
             var ppid = $("#pp_id").val();
-
+            const token = $('meta[name="token"]').attr("content");
             $.ajax({
                 url: __URL_include_property_,
                 type: "POST",
+                headers: { token: token },
                 data: {
                     key: "propertyStatusUpdate",
                     password: _AUTH_PASSWORD_,
@@ -300,10 +294,11 @@ if (isset($_GET['ppid'])) {
 
     function deleteImage(id, name) {
         // alert(id);
-
+        const token = $('meta[name="token"]').attr("content");
         $.ajax({
             url: "delete.php",
             type: "POST",
+            headers: { token: token },
             data: { name: name, mdid: id, mediatype: "img" },
             dataType: "json",
             success: function (jsondata) {
@@ -323,9 +318,11 @@ if (isset($_GET['ppid'])) {
     }
     function loadPhotoMedia() {
         var ppid = $("#pp_id").val();
+        const token = $('meta[name="token"]').attr("content");
         $.ajax({
             url: "load.php",
             type: "POST",
+            headers: { token: token },
             // contentType : false,
             // processData: false,
             data: {
@@ -421,12 +418,13 @@ if (isset($_GET['ppid'])) {
     function phtoUpload(formData) {
 
         $(document).ready(function () {
-
+            const token = $('meta[name="token"]').attr("content");
 
             $.ajax({
                 url: "upload.php",
                 data: formData,
                 type: "POST",
+                headers: { token: token },
                 contentType: false,
                 processData: false,
                 dataType: "json",

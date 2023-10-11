@@ -1,5 +1,8 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();//Start session if none exists/already started
+}
+$headers = getallheaders();
 ini_set ('display_errors', 1);  
 ini_set ('display_startup_errors', 1);  
 error_reporting (E_ALL);
@@ -17,47 +20,53 @@ $hashHandler = new Hashhandler();
 $communicationUtil = new cummunicationUtil();
 // print_r($_POST);
 
-if ($_POST["username"] == _AUTH_USERNAME_ && $_POST["password"] == _AUTH_PASSWORD_) {
+if (isset($headers['token'])) {
+	$header_token = $headers['token'];
+	if ($header_token == $_SESSION['token']) {
+		if ($_POST["username"] == _AUTH_USERNAME_ && $_POST["password"] == _AUTH_PASSWORD_) {
 
 
-	switch ($_POST['key']) {
-		case _GETALL_:
-			fetchAllData($dbservice, $dhandler);
-			break;
-		case _DELETEDATA_:
-			deleteData($dbservice, $dhandler);
-			break;
-		case _GETONE_:
-			fetchoneData($dbservice, $dhandler);
-			break;
-		case _UPDATEDATA_:
-			updateData($dbservice, $dhandler);
-			break;
-		case _SAVEDATA_:
-			saveData($dbservice, $hashHandler,$communicationUtil);
-			break;
-		case _LOGIN_:
-			fetchoneDataForLogin($dbservice);
-			break;
-		case _LOGOUT_:
-			logOut($dbservice, $dhandler);
-			break;
-		case _VERIFY_OTP_:
-			verifyOtp($dbservice, $dhandler);
-			break;
-		case _RESENT_OTP_:
-			reSentOtp($dbservice, $dhandler,$communicationUtil);
-			break;
-		case _SEND_OTP_:
-			sendOTP($dbservice, $dhandler,$communicationUtil);
-			break;
+			switch ($_POST['key']) {
+				case _GETALL_:
+					fetchAllData($dbservice, $dhandler);
+					break;
+				case _DELETEDATA_:
+					deleteData($dbservice, $dhandler);
+					break;
+				case _GETONE_:
+					fetchoneData($dbservice, $dhandler);
+					break;
+				case _UPDATEDATA_:
+					updateData($dbservice, $dhandler);
+					break;
+				case _SAVEDATA_:
+					saveData($dbservice, $hashHandler,$communicationUtil,$dhandler);
+					break;
+				case _LOGIN_:
+					fetchoneDataForLogin($dbservice);
+					break;
+				case _LOGOUT_:
+					logOut($dbservice, $dhandler);
+					break;
+				case _VERIFY_OTP_:
+					verifyOtp($dbservice, $dhandler);
+					break;
+				case _RESENT_OTP_:
+					reSentOtp($dbservice, $dhandler,$communicationUtil);
+					break;
+				case _SEND_OTP_:
+					sendOTP($dbservice, $dhandler,$communicationUtil);
+					break;
+			}
+		} else {
+			echo ('HTTP/1.0 401 Unauthorized');
+		}
 	}
-} else {
-	echo ('HTTP/1.0 401 Unauthorized');
+	else{
+		echo "ERROR: Tokens dont match";
+		exit;
+	}
 }
-
-
-
 
 
 
@@ -120,7 +129,7 @@ function updateData($dbservice, $dhandler)
 
 
 ///  Save Function 
-function saveData($dbservice, $hashHandler,$communicationUtil)
+function saveData($dbservice, $hashHandler,$communicationUtil,$dhandler)
 {
 	$tbl_registrationobject = $_POST['tbl_registrationobject'];
 
@@ -140,17 +149,19 @@ function saveData($dbservice, $hashHandler,$communicationUtil)
 
 	$rg_col1 = $tbl_registrationobjectarray['rg_col1'];
 	$rg_col2 = $tbl_registrationobjectarray['rg_col2'];
+	$created_on = $dhandler->getCurrentDate();
+	$updated_on = $dhandler->getCurrentDate();
 
 	if (!empty($rg_fname)) {
 
-		$query1 = "INSERT INTO tbl_staff ( `pk_sfid` , `sf_name` , `sf_email` , `sf_mobile` , `sf_status`   )  VALUES (null , '$rg_fname' , '$rg_email' , '$rg_mobile' , 'Active' )";
+		$query1 = "INSERT INTO tbl_staff ( `pk_sfid` , `sf_name` , `sf_email` , `sf_mobile` , `sf_status` , `sf_created_at` ,`sf_updated_at`)  VALUES (null , '$rg_fname' , '$rg_email' , '$rg_mobile' , 'Active' , '$created_on', '$updated_on' )";
 
 
 
 		$result1 = $dbservice->executeDbSaveUpdateQueryReturnId($query1);
 		// printf($result1);
 		$fk_sfid = $result1;
-		$query = "INSERT INTO tbl_registration ( `pk_rgid` , `fk_sfid` , `rg_fname` , `rg_email` , `rg_mobile` , `rg_address` , `rg_password`  , `rg_status` , `rg_is_seller`,`rg_is_buyer`,`rg_col1`,`rg_col2` )  VALUES (null , $fk_sfid , '$rg_fname' , '$rg_email' , '$rg_mobile' , '$rg_address' , '$rg_password'  , 'inActive' ,'$rg_is_seller','$rg_is_buyer','$rg_col1','$rg_col2' )";
+		$query = "INSERT INTO tbl_registration ( `pk_rgid` , `fk_sfid` , `rg_fname` , `rg_email` , `rg_mobile` , `rg_address` , `rg_password`  , `rg_status` , `rg_is_seller`,`rg_is_buyer`,`rg_col1`,`rg_col2`,`rg_created_at`,`rg_updated_at` )  VALUES (null , $fk_sfid , '$rg_fname' , '$rg_email' , '$rg_mobile' , '$rg_address' , '$rg_password'  , 'inActive' ,'$rg_is_seller','$rg_is_buyer','$rg_col1','$rg_col2' , '$created_on', '$updated_on' )";
 		// echo ($query);
 		$result = $dbservice->executeDbSaveUpdateQueryReturnId($query);
 		$communicationUtil->sendMail($rg_email, $rg_col2);

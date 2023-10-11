@@ -1,5 +1,8 @@
 <?php
-
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();//Start session if none exists/already started
+}
+$headers = getallheaders();
 include('../../config/dbservice.php');
 include('../../config/datehandler.php');
 $output_dir = _IMAGE_UPLOAD_PATH_;

@@ -29,11 +29,13 @@ const __URL_include_index_ = __URL_INCLUDE_ + "index.php";
 const __URL_include_buy_pp_index_ = __URL_INCLUDE_ + "buy_pp_index.php";
 const __URL_include_rent_pp_index_ = __URL_INCLUDE_ + "rent_pp_index.php";
 const __URL_include_plot_index_ = __URL_INCLUDE_ + "plot_index.php";
+const __URL_include_image_gallary_ = __URL_INCLUDE_ + "image_gallary.php";
+const __URL_include_gallary_ = __URL_PAGES_ + "gallary.php";
 
 
  // // page/list_pages/
  const __URL_adminrequestlistpage_ =__URL_LIST_PAGES_ +"admin_request_list.php" ;
- const __URL_loanlistpage_ =__URL_LIST_PAGES_ +"loanlistpage.php" ;
+ const __URL_loanlistpage_ =__URL_LIST_PAGES_ +"loanrequest_list.php" ;
  const __URL_propertylistpage_ =__URL_LIST_PAGES_ +"property_list.php" ;
  const __URL_stafflistpage_ =__URL_LIST_PAGES_ +"staff_list.php" ;
  // //page/report/
@@ -71,4 +73,6 @@ const __URL_include_plot_index_ = __URL_INCLUDE_ + "plot_index.php";
  const __URL_include_staff_ =__URL_INCLUDE_ +"staff.php";
  const __URL_include_viewmediavideo_ =__URL_INCLUDE_ +"viewmediavideo.php";
  const __URL_include_SingleProduct_ =__URL_INCLUDE_ +"singleproductpage.php";
-
+ const __URL_IMAGE_ =  __BASE__URL__ + "upload/images/";
+ const __URL_VIDEO_ = __BASE__URL__ + "upload/videos/";
+ const __URL_INDEX_LOAN =  __BASE__URL__ + "loan-index.php?#saveloan";

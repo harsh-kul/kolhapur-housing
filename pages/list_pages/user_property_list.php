@@ -1,6 +1,19 @@
 <?php 
 include('../../config/route.php'); 
-session_start(); 
+// session_start(); 
+if (session_status() == PHP_SESSION_NONE) {
+	session_start();
+}
+
+// if (isset($_GET['get_token']) && empty($_SESSION["token"])) {
+	$token = bin2hex(random_bytes(64));
+	$_SESSION["token"] = $token;
+// }
+
+// if (isset($_GET['kill_token'])) {
+// 	unset($_SESSION["token"]);
+// 	session_destroy();
+// }
 if (isset( $_SESSION['id']))
 {
     $regid=$_SESSION['id'];
@@ -28,6 +41,14 @@ else{
 </head>
 
 <body>
+
+
+<?php
+	if (isset($_SESSION["token"])) {
+		echo '<meta name="token" content="' . $_SESSION["token"] . '">';
+
+	}
+	?>
 <input type="hidden" name="userId" id="userId" value= <?php echo $regid; ?> >
     <script>
 $(document).ready(function () {
@@ -44,7 +65,7 @@ $(document).ready(function () {
     <div class="d-flex flex-column flex-lg-row h-lg-full bg-surface-secondary">
 
         <!-- Vertical Navbar -->
-        <?php include('../compoent/adminnav.php'); ?>
+        <?php include('../compoent/usernav.php'); ?>
         <!-- Main content -->
         <div class="h-screen flex-grow-1 overflow-y-lg-auto">
             <!-- Header -->

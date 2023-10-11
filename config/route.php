@@ -10,6 +10,9 @@ define("__URL_CSS_", __BASE__URL__ . "css/");
 define("__URL_CSS_INTERNAL_", __URL_CSS_ . "internal/");
 define("__URL_CSS_EXTERNAL_", __URL_CSS_ . "external/");
 define("__URL_COMMON_COMP_", __URL_PAGES_ . "compoent/");
+define("__URL_IMAGE_", __BASE__URL__ . "upload/images/");
+define("__URL_VIDEO_", __BASE__URL__ . "upload/videos/");
+
 
 // // home url
 define("__URL_INDEX_", __BASE__URL__ . "index.php");
@@ -42,6 +45,7 @@ define("__URL_viewmediavideopage_", __URL_PAGES_ . "viewmediavideo.php");
 // // page/list_pages/
 define("__URL_adminrequestlistpage_", __URL_LIST_PAGES_ . "admin_request_list.php");
 define("__URL_loanlistpage_", __URL_LIST_PAGES_ . "loanrequest_list.php");
+define("__URL_userloanlistpage_", __URL_LIST_PAGES_ . "userloanrequest_list.php");
 define("__URL_propertylistpage_", __URL_LIST_PAGES_ . "property_list.php");
 define("__URL_userpropertylistpage_", __URL_LIST_PAGES_ . "user_property_list.php");
 define("__URL_stafflistpage_", __URL_LIST_PAGES_ . "staff_list.php");
@@ -92,6 +96,7 @@ define("__URL_include_plot_index_ ",__URL_INCLUDE_ . "plot_index.php");
 // common  compoent 
 define("__URL_COMMON_COMP_DRAWER", __URL_COMMON_COMP_ . "drawer.php");
 
+
 /// js  
 define("_JS_LOADER_HANDLER_",__URL_JS_."loaderhandler.js");
 define("_JS_CONFIG_",__URL_JS_."config.js");
@@ -104,7 +109,7 @@ define("_JS_STRING_HADNLER_",__URL_JS_."stringhandler.js");
 define("_JS_UTILS_",__URL_JS_."utils.js");
 define("_JS_INDEX_",__URL_JS_."index.js");
 define("_JS_MAIN_",__URL_JS_."main.js");
-
+define("_JS_DATATABLE_", __URL_JS_."datatablehandler.js");
 
 
 /// CSS
@@ -130,6 +135,8 @@ define("__URL_CSS_JQUERY_TIMEPICER",__URL_CSS_."jquery.timepicker.css");
 define("__URL_CSS_FLATICON",__URL_CSS_."flaticon.css");
 define("__URL_CSS_ICOMOON",__URL_CSS_."icomoon.css");
 define("__URL_CSS_STYLE",__URL_CSS_."style.css");
+define("__URL_CSS_GALLARY",__URL_CSS_INTERNAL_."image_gallary.css");
+define("__URL_include_gallary_",__URL_PAGES_."gallary.php");
 
 
 

@@ -5,9 +5,11 @@ $(document).ready(function () {
 
 function loadusercount() {
   // alert("ghjk");
+  const token = $('meta[name="token"]').attr("content");
   $.ajax({
     url: "../include/dashbord.php",//__URL_include_dashbord_,
     type: "POST",
+    headers: {token : token},
     data: {
       key: "loadusercount",
       password: _AUTH_PASSWORD_,
@@ -39,7 +41,8 @@ function loadusercount() {
 
 
 function loadRecentAdded() {
-alert("in loadRecentAdded")
+  const token = $('meta[name="token"]').attr("content");
+// alert("in loadRecentAdded")
   var dataTableHandler = new DataTableHandler("loadRecent");
   dataTableHandler.inlizlaiseDataTable();
 
@@ -47,6 +50,7 @@ alert("in loadRecentAdded")
     $.ajax({
       url: __URL_dashboardpage_,
       type: "POST",
+      headers: {token : token},
       data: {
         key: "loadRecent",
         password: _AUTH_PASSWORD_,
