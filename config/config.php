@@ -13,7 +13,7 @@
 define("_DB_", "i8954968_wp1");
 define("_DNS_", "localhost");
 define("_USER_", "harshhk");
-define("_PASS_", "K$PcJ#,r?ZbS");
+define("_PASS_", "K\$PcJ#,r?ZbS");
 define("_VIDO_UPLOAD_PATH_", "../../upload/videos/");
 define("_IMAGE_UPLOAD_PATH_", "../../upload/images/");
 define("__BASE__URL__","http://housingkolhapur.com/test_ver/");
