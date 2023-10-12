@@ -5,7 +5,7 @@
 const _D_B_="i8954968_wp1"; // production
 const _DNS_="localhost";  // production
 const _USER_="harshhk";  // production     
-const _PASS_="K$PcJ#,r?ZbS"; // production
+const _PASS_="nm28wA2DdNNu4Uq"; // production
 const _SAVEDATA_="savedata";					     
 const _UPDATEDATA_="updatedata";
 const _GETALL_="getalldata";
