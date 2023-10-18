@@ -58,9 +58,7 @@
 
         <?php
         if (isset($_SESSION["is_admin"])) {
-          // echo $_SESSION["is_admin"];
-          // echo _MESSAGE_YES_;
-          // echo strcmp($_SESSION["is_admin"],_MESSAGE_YES_);
+       
           if (strcmp($_SESSION["is_admin"], _MESSAGE_YES_) == 0) {
             echo "<li class='nav-item'><a href=" . __URL_dashboardpage_ . "   class='nav-link' onclick='mobileMenu()'>Admin</a></li>";
           }
@@ -69,13 +67,16 @@
         <?php
         if (isset($_SESSION["id"])) {
           // echo "<li class='nav-item'><a href=" . __URL_propertypagepage_ . "   class='nav-link' onclick='mobileMenu()'>Add property</a></li>";
-          $str = "<div class='dropdown nav-item'>" .
-            "<a href='#' class='dropdown-toggle nav-link' data-bs-toggle='dropdown'>Property</a>" .
-            "<li class='dropdown-menu nav-item'>" .
-            "<a href='". __URL_propertypagepage_."' class='dropdown-item nav-item'>Add Property</a>" .
-            "<a href='". __URL_userpropertylistpage_."' class='dropdown-item nav-item'>My Property List</a>" .
-            "</li>" .
-            "</div>";
+          $str = "";
+         
+          if (!isset($_SESSION["is_admin"])) {
+           if (!strcmp($_SESSION["is_admin"], _MESSAGE_YES_) == 0) {
+            $str.= "<li class='nav-item'><a href='". __URL_propertypagepage_."'class='nav-link'>Add Property</a></li>" ;
+        $str.= "<li class='nav-item'><a href='". __URL_userpropertylistpage_."'class='nav-link'>My Property List</a></li>";
+
+          }
+        }
+            
             echo $str;
         }
         ?>
@@ -88,10 +89,17 @@
         }
         ?>
 
-        <!-- <li class="nav-item cta"><a href=<?php echo __URL_loginpage_ ?> class="nav-link ml-lg-2"><span
-                            class="icon-user"></span> Sign-In</a></li> -->
-        <li class="nav-item cta cta-colored"><a href=<?php echo __URL_regipage_ ?> class="nav-link"><span
-              class="icon-pencil"></span> Sign-Up</a></li>
+      <?php 
+          if (!isset($_SESSION["is_admin"])) {
+           if (!strcmp($_SESSION["is_admin"], _MESSAGE_YES_) == 0) {
+       
+            echo "<li class='nav-item cta cta-colored'><a href= ".__URL_regipage_."class='nav-link'><span class='icon-pencil'></span> Sign-Up</a></li>";
+          }
+        }
+     
+      
+
+  ?>
 
         <!-- /////////////////////////////////////////// -->
 

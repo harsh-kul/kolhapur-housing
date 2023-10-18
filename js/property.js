@@ -514,7 +514,7 @@ function acProperty(id) {
         success: function (data, status, xhr) {
           // dataTableHandler.CleanAndRefreshDataTable();
           console.log("property id data success  :success " + data);
-          // window.location.href = "../pages/list_pages/admin_request_list.php";
+          window.location.href = "../../pages/list_pages/admin_request_list.php";
         },
         error: function (data) {
           console.log("property id data eroor  :error " + data.responseText);

@@ -276,45 +276,61 @@ function loadAllstaff(){
 //////////// Load All Data Close    ////////////////////////////
  //////////// Fetch and  Data     ////////////////////////////   
 function  updaterecord(id,type){
+
+  var yes = function yes() {
+   
  $(document).ready(function() {
- var userobject = {id : id}
- const token = $('meta[name="token"]').attr("content");
-$.ajax({
-url: __URL_include_staff_,
-type: "POST",
-headers: {token : token},
- data: {
-"key":"deletedata",
-"password":_AUTH_PASSWORD_,
-"username":_AUTH_USERNAME_,
-"tbl_staff_name": JSON.stringify(userobject)//tbl_staff_name 
- },
- dataType:"json",
- success: function(data, status, xhr) {
-console.log("staff id data Update Data  :success ");
-console.log(data);
-var data1= JSON.parse(data["data"]);
-if(data["status"])
-{
-getsuccessAlert("Record Delete");
-}
-else{
-// alert("Data Not Deleted ");
-}
+  var userobject = {id : id}
+  const token = $('meta[name="token"]').attr("content");
+ $.ajax({
+ url: __URL_include_staff_,
+ type: "POST",
+ headers: {token : token},
+  data: {
+ "key":"deletedata",
+ "password":_AUTH_PASSWORD_,
+ "username":_AUTH_USERNAME_,
+ "tbl_staff_name": JSON.stringify(userobject)//tbl_staff_name 
+  },
+  dataType:"json",
+  success: function(data, status, xhr) {
+ console.log("staff id data Update Data  :success ");
+ console.log(data);
+ var data1= JSON.parse(data["data"]);
+ if(data["status"])
+ {
+  AlertHandler.getsuccessAlert("Record Delete");
+ }
+ else{
+  AlertHandler. getErrorAlert("Data Not Deleted ");
+ }
+  
+  loadAllstaff();
+  },
+ error: function(data) {
+ console.log("staff id data Update Data :error "+data.responseText );
+  },
+  complete: function() {
+ console.log("staff id data Update Data  :complete ");
  
- loadAllstaff();
- },
-error: function(data) {
-console.log("staff id data Update Data :error "+data.responseText );
- },
- complete: function() {
-console.log("staff id data Update Data  :complete ");
-
-
-   }
-});
-  });
+ 
+    }
+ });
+   });
+  };
+  var no = function no() {
+    closeNav();
+  };
+  AlertHandler.doYouWantAlert(
+    __ALERT_TITLE__,
+    StringHandler.DELETE_USER,
+    yes,
+    no
+  );
 }
+
+
+
  function goforupdaterecord(id){
   localStorage.setItem("staffid",id);
   window.location.href =__URL_staffpage_;

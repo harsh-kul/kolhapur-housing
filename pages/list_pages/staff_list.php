@@ -31,6 +31,9 @@ include('../../config/route.php'); ?>
     <script src="../../js/datatablehandler.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../../js/loaderhandler.js"></script>	
+    <script src="../../js/alerthandler.js"></script>
+    <script src="../../js/stringhandler.js"></script>
+    <script src="../../js/drawer.js"></script>
 
 </head>
 

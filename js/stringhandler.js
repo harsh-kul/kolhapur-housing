@@ -69,6 +69,7 @@ class StringHandler{
    static REJECT_PROPERT="Do You Want To Reject Property ?";
    static REQ_IS_ALPHABET="Please Enter Valid Name";
    static REQ_VALID_LOAN_AMT="Please Enter Valid loan amount";
+   static DELETE_USER="Do You Want To Delete User ?";
    
 
 
