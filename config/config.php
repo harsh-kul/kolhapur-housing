@@ -9,6 +9,7 @@
 // define("__BASE__URL__","http://localhost:8080/kolhapur-housing/");
 
 
+
 //production
 define("_DB_", "i8954968_wp1");
 define("_DNS_", "localhost");
