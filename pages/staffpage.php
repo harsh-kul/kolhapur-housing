@@ -27,7 +27,23 @@ if (session_status() == PHP_SESSION_NONE) {
     </title>
     <link rel="stylesheet" href="../css/internal/dashboard.css">
     <link rel="stylesheet" href="../css/internal/dashboard_index.css">
-	<script src="../../js/loaderhandler.js"></script>
+	<?php include('../config/route.php');?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+<script src=<?php echo _JS_LOADER_HANDLER_; ?>></script>
+<script src=<?php echo _JS_CONFIG_; ?>></script>
+<script src=<?php echo _JS_ROUTE_; ?>></script>
+<script src=<?php echo _JS_DRAWER_; ?>></script>
+<script src=<?php echo _JS_VALIDATION_HADNLER_; ?>></script>
+<script src=<?php echo _JS_ALERT_HADNLER_; ?>></script>
+<script src=<?php echo _JS_STRING_HADNLER_; ?>></script>
+<script src=<?php echo _JS_UTILS_; ?>></script>
+<script src=<?php echo _JS_PROGRESS_BAR_;?>></script>
+<script src=<?php echo _JS_INDEX_;?>></script>  
+<script src=<?php echo _JS_DATATABLE_;?>></script>
+    <script src="../js/tbl_staff.js"></script>
+    <script src="../js/datatablehandler.js"></script>
+    
 </head>
 
 <body>
@@ -90,32 +106,48 @@ if (session_status() == PHP_SESSION_NONE) {
                         <form>
 
                             <div class="row mt-5">
-
+                            <div class="form-outline col-sm-6">
+                            First Name
+                                </div>
                                 <div class="form-outline col-sm-6">
                                     <input type="text" id="staff_sf_name" class="form-control form-control-lg"
                                         placeholder="First Name">
                                 </div>
-                                <div class="form-outline col-sm-6">
-                                    <input type="text" id="staff_sf_name" class="form-control form-control-lg"
-                                        placeholder="Last Name">
-                                </div>
+                              
 
                             </div>
                             <div class="row mt-5">
+                            <div class="form-outline col-sm-6">
+                            Email
+                                </div>
                                 <div class="form-outline col-sm-6">
                                     <input type="text" id="staff_sf_email" class="form-control form-control-lg"
                                         placeholder="Email">
+                                </div>
+                                
+                            </div>
+                            <div class="row mt-5">
+                            <div class="form-outline col-sm-6">
+                            Mobile
                                 </div>
                                 <div class="form-outline col-sm-6">
                                     <input type="text" id="staff_sf_mobile" class="form-control form-control-lg"
                                         placeholder="Mobile">
                                 </div>
+                                
                             </div>
+                            
 
-                            <br>
+
+                            
+                            <div class="row mt-5">
+                            <div class="form-outline col-sm-6">
+                            
+                                </div>
                             <div class="form-outline col-sm-6">
                                 <button id="btn_update_staff" value="Update" class="btn btn-primary">Update</button>
                             </div>
+</div>
                         </form>
 
 
