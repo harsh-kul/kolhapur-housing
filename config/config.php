@@ -17,7 +17,7 @@ define("_USER_", "harshhk");
 define("_PASS_", "Knm28wA2DdNNu4Uq");
 define("_VIDO_UPLOAD_PATH_", "../../upload/videos/");
 define("_IMAGE_UPLOAD_PATH_", "../../upload/images/");
-define("__BASE__URL__","http://housingkolhapur.com/test_ver/");
+define("__BASE__URL__","http://housingkolhapur.com/dev/");
 
 
 define("_SAVEDATA_", "savedata");

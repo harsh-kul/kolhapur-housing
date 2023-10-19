@@ -45,7 +45,7 @@ const __ALERT_SELECTED_PHOTO_LARGE_="Selected Photo is More Than 10 Mb Please se
 const __ALERT_SELECTED_VIDEO_LARGE_="Selected Video is More Than 20 Mb Please selcet another one "
 
 // const __BASE__URL__ = "http://localhost:8080/kolhapur-housing/";
-const __BASE__URL__ = "http://housingkolhapur.com/test_ver/";
+const __BASE__URL__ = "http://housingkolhapur.com/dev/";
 const __URL_INCLUDE_ =  __BASE__URL__ + "include/";
 
 
