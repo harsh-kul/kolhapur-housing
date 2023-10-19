@@ -2,10 +2,10 @@
 // const _DNS_="localhost";  //local
 // const _USER_="root"; //local		     
 // const _PASS_="root"; //local
-const _D_B_="i8954968_wp1"; // production
+const _D_B_="housing-kolhapur-db"; // production
 const _DNS_="localhost";  // production
-const _USER_="harshhk";  // production     
-const _PASS_="nm28wA2DdNNu4Uq"; // production
+const _USER_="housing-admin";  // production     
+const _PASS_="LVhtSBVZm%&+"; // production
 const _SAVEDATA_="savedata";					     
 const _UPDATEDATA_="updatedata";
 const _GETALL_="getalldata";
